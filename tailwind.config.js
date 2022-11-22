@@ -11,6 +11,8 @@ module.exports = {
         technor: ["var(--font-technor)", "sans-serif"],
         switzer: ["var(--font-switzer)", "sans-serif"],
         switzerItalic: ["var(--font-switzer-italic)", "sans-serif"],
+        bespokeSlab: ["var(--font-bespokeSlab)", "sans-serif"],
+        bespokeSlabItalic: ["var(--font-bespokeSlab-italic)", "sans-serif"],
       },
       colors: {
         light: "#ECEEEF",

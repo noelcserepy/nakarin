@@ -5,7 +5,7 @@ import ScrollText from "./scrolltext";
 
 function Hero() {
   return (
-    <div className="w-screen h-screen bg-herobg relative top-0 left-0 overflow-hidden">
+    <div className="w-screen h-screen bg-herobg relative text-light">
       <Map />
       <Image
         alt="Nakarin Saisorn portrait"
@@ -13,10 +13,11 @@ function Hero() {
         priority
         fill
         style={{ objectFit: "contain", objectPosition: "bottom center" }}
-        className="bottom-0 left-1/2"
+        className="bottom-0 left-1/2 "
       />
+
       <ScrollText />
-      <div className="font-switzer font-extralight text-4xl text-white whitespace-pre absolute right-[10%] top-1/2 -translate-y-1/2">
+      <div className="font-switzer font-extralight text-4xl whitespace-pre absolute right-[10%] top-1/2 -translate-y-1/2">
         {`Freelance
 Photographer
 & Videographer`}

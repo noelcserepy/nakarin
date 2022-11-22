@@ -1,6 +1,8 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
+import { motion } from "framer-motion";
+import { ScrollerMotion } from "scroller-motion";
 
 const switzer = localFont({
   src: "./Switzer-Variable.woff2",
@@ -16,6 +18,20 @@ const switzerItalic = localFont({
   display: "swap",
   weight: "100 900",
 });
+const bespokeSlab = localFont({
+  src: "./BespokeSlab-Variable.woff2",
+  style: "normal",
+  variable: "--font-bespokeSlab",
+  display: "swap",
+  weight: "100 900",
+});
+const bespokeSlabItalic = localFont({
+  src: "./BespokeSlab-VariableItalic.woff2",
+  style: "italic",
+  variable: "--font-bespokeSlab-italic",
+  display: "swap",
+  weight: "100 900",
+});
 const technor = localFont({
   src: "./Technor-Variable.woff2",
   style: "normal",
@@ -26,10 +42,16 @@ const technor = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main
-      className={`${switzer.variable} ${switzerItalic.variable} ${technor.variable} text-switzer`}
+    <motion.main
+      className={`
+      ${switzer.variable} 
+      ${switzerItalic.variable} 
+      ${bespokeSlab.variable} 
+      ${bespokeSlabItalic.variable} 
+      ${technor.variable}  
+      h-full w-screen overflow-x-hidden text-switzer bg-light`}
     >
       <Component {...pageProps} />
-    </main>
+    </motion.main>
   );
 }
