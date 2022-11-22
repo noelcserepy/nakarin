@@ -9,7 +9,10 @@ function Map() {
         src={zhmap}
         priority
         fill
-        style={{ objectFit: "contain", objectPosition: "top left" }}
+        style={{
+          objectFit: "contain",
+          objectPosition: "top left",
+        }}
         className="bottom-0 left-1/2"
       />
       <div className="font-switzer text-2xl text-white absolute left-1/4 top-1/3">
