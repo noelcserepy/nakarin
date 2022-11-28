@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ${bespokeSlab.variable} 
       ${bespokeSlabItalic.variable} 
       ${technor.variable}  
-      h-full w-screen overflow-x-hidden text-switzer bg-light`}
+      h-full w-screen overflow-x-hidden text-switzer bg-light text-dark`}
     >
       <Component {...pageProps} />
     </motion.main>

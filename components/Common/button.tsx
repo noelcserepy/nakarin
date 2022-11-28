@@ -36,11 +36,11 @@ export default function Button({
   };
 
   return (
-    <motion.div
+    <motion.button
       variants={buttonVariants}
       className={`font-bespokeSlab font-bold text-lg ${shades[shade]}`}
     >
       {text}
-    </motion.div>
+    </motion.button>
   );
 }

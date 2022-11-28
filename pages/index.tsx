@@ -8,13 +8,20 @@ import Map from "../components/Home/map";
 import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
 import Intro from "../components/Home/intro";
 import Projects from "../components/Home/projects";
+import { useRef } from "react";
 
 export default function Home() {
   const { scrollYProgress } = useScroll({
     offset: ["end end", "start start"],
   });
-
   const yUp = useTransform(scrollYProgress, [1, 0], [0, -300]);
+
+  const ref = useRef(null);
+  const { scrollYProgress: darkenProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start center"],
+  });
+  const bgColor = useTransform(darkenProgress, [0, 1], ["#ECEEEF", "#090B0C"]);
 
   return (
     <ScrollerMotion
@@ -25,17 +32,6 @@ export default function Home() {
 
       <motion.section className="w-screen h-screen relative text-light overflow-clip">
         <Map />
-        {/* <Image
-          alt="Nakarin Saisorn portrait"
-          src={onlyFace}
-          priority
-          fill
-          style={{
-            objectFit: "contain",
-            objectPosition: "bottom center",
-            transform: "scale(0.9) translateY(6%)",
-          }}
-        /> */}
         <Image
           alt="Nakarin Saisorn - Tremondi Quinten Interior"
           src={tremondi}
@@ -57,14 +53,19 @@ export default function Home() {
           </div>
         </motion.div>
       </motion.section>
-      <motion.section
-        className="z-50 bg-light"
+
+      <motion.div
+        className="z-10"
         initial={{ y: 0 }}
-        style={{ y: yUp }}
+        style={{ y: yUp, backgroundColor: bgColor }}
       >
-        <Intro />
-        <Projects />
-      </motion.section>
+        <motion.section>
+          <Intro />
+        </motion.section>
+        <motion.section ref={ref} className="mt-48">
+          <Projects />
+        </motion.section>
+      </motion.div>
     </ScrollerMotion>
   );
 }
