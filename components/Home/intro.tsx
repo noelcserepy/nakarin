@@ -50,7 +50,7 @@ const learnVariants = {
   },
 };
 
-function RecentWork() {
+export default function Intro() {
   const headerText = `I help brands and individuals find their unique look, using both video and photography.`;
   const spanTexts = headerText.split(" ");
 
@@ -96,5 +96,3 @@ function RecentWork() {
     </div>
   );
 }
-
-export default RecentWork;

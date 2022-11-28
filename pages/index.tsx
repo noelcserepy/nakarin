@@ -5,7 +5,8 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import ScrollText from "../components/Home/scrolltext";
 import Image from "next/image";
 import Map from "../components/Home/map";
-import onlyFace from "../public/james_only_face.png";
+import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
+import Intro from "../components/Home/intro";
 
 export default function Home() {
   const { scrollYProgress } = useScroll({
@@ -23,7 +24,7 @@ export default function Home() {
 
       <motion.section className="w-screen h-screen bg-herobg relative text-light overflow-clip">
         <Map />
-        <Image
+        {/* <Image
           alt="Nakarin Saisorn portrait"
           src={onlyFace}
           priority
@@ -33,6 +34,16 @@ export default function Home() {
             objectPosition: "bottom center",
             transform: "scale(0.9) translateY(6%)",
           }}
+        /> */}
+        <Image
+          alt="Nakarin Saisorn - Tremondi Quinten Interior"
+          src={tremondi}
+          priority
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center center",
+          }}
         />
         <motion.div
           className="w-screen h-screen z-10"
@@ -40,10 +51,8 @@ export default function Home() {
           style={{ y: yUp, zIndex: "10" }}
         >
           <ScrollText />
-          <div className="font-switzer font-extralight text-4xl whitespace-pre absolute right-[10%] top-1/2 -translate-y-1/2">
-            {`Freelance
-Photographer
-& Videographer`}
+          <div className="font-switzer text-4xl whitespace-pre absolute bottom-4 left-24">
+            {`Freelance Photographer & Videographer`}
           </div>
         </motion.div>
       </motion.section>
@@ -52,7 +61,7 @@ Photographer
         initial={{ y: 0 }}
         style={{ y: yUp }}
       >
-        <RecentWork />
+        <Intro />
       </motion.section>
     </ScrollerMotion>
   );

@@ -24,7 +24,7 @@ function ScrollText({ baseVelocity = 100 }) {
   const direction = useRef<number>(-1);
 
   useAnimationFrame((time, delta) => {
-    let moveBy = direction.current * baseVelocity * (delta / 15000);
+    let moveBy = direction.current * baseVelocity * (delta / 20000);
 
     moveBy += direction.current * moveBy * velocity.get();
 

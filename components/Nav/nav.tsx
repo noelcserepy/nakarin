@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Button from "../Common/button";
 
 const navVariants = {
   initial: {
@@ -32,15 +33,24 @@ const itemVariants = {
 function Nav() {
   return (
     <motion.div
-      className="font-bespokeSlab text-white absolute top-0 w-screen h-20 flex justify-between items-center px-16 z-10"
+      className="absolute top-0 w-screen h-20 flex justify-between items-center px-24 z-10 [&>*]:cursor-pointer"
       variants={navVariants}
       initial="initial"
       animate="animate"
     >
-      <motion.div variants={itemVariants}>Nakarin</motion.div>
-      <motion.div className="flex space-x-4">
-        <motion.div variants={itemVariants}>Work</motion.div>
-        <motion.div variants={itemVariants}>About</motion.div>
+      <motion.div variants={itemVariants}>
+        <Button text="Nakarin" shade="light" />
+      </motion.div>
+      <motion.div className="flex space-x-8 items-center">
+        <motion.div variants={itemVariants}>
+          <Button text="Work" shade="light" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <Button text="About" shade="light" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <Button text="Contact" shade="lightBorder" />
+        </motion.div>
       </motion.div>
     </motion.div>
   );

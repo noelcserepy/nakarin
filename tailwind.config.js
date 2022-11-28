@@ -19,7 +19,7 @@ module.exports = {
         mid: "#D0D7D8",
         mid2: "#4A545F",
         dark: "#090B0C",
-        beige: "#E4CC9F",
+        beige: "#A77946",
         beigelight: "#E4DFD5",
         herobg: "#7B818A",
       },

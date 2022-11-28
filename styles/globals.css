@@ -6,6 +6,11 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+::selection {
+  background: #a77946;
+  color: #090b0c;
+}
+
 body {
   overflow-x: hidden;
   overflow-y: auto;
