@@ -38,7 +38,7 @@ export default function Button({
   return (
     <motion.div
       variants={buttonVariants}
-      className={`font-bespokeSlab text-lg ${shades[shade]}`}
+      className={`font-bespokeSlab font-bold text-lg ${shades[shade]}`}
     >
       {text}
     </motion.div>

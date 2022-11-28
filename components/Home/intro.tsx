@@ -1,5 +1,13 @@
 import Project from "./project";
 import { motion } from "framer-motion";
+import birrfeld from "../../public/nakarin_saisorn_takeoff_birrfeld_1.jpg";
+import Image from "next/image";
+import Button from "../Common/button";
+import dosenbachLogo from "public/dosenbach_logo.svg";
+import elmerLogo from "public/elmer_citro_logo.svg";
+import oppoLogo from "public/oppo_logo.svg";
+import weltklasseLogo from "public/weltklasse_zh_logo.svg";
+import arrowDown from "public/arrow_down.svg";
 
 const h4Variants = {
   initial: {
@@ -22,7 +30,7 @@ const headerSpanVariants = {
   animate: {
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 1.2,
       ease: "easeOut",
     },
   },
@@ -55,43 +63,59 @@ export default function Intro() {
   const spanTexts = headerText.split(" ");
 
   return (
-    <div className="flex flex-col px-48 w-full">
-      <div className="flex w-full justify-between py-48">
-        <motion.h4
-          className="font-switzer font-extralight text-4xl w-7/12 overflow-hidden flex flex-wrap leading-tight "
-          variants={h4Variants}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ amount: "all" }}
-        >
-          {spanTexts.map((t, i) => (
-            <motion.span
-              key={i}
-              className="overflow-hidden mr-3 inline-flex relative"
-            >
+    <div className="flex flex-col px-32 w-full h-screen justify-between">
+      <div className="flex w-full justify-between mt-72">
+        <div className="flex flex-col justify-between items-start w-1/2">
+          <motion.h4
+            className="font-switzer font-light text-4xl w-full overflow-hidden flex flex-wrap leading-tight "
+            variants={h4Variants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ amount: "some" }}
+          >
+            {spanTexts.map((t, i) => (
               <motion.span
-                variants={headerSpanVariants}
-                className="block relative"
+                key={i}
+                className="overflow-hidden mr-3 inline-flex relative"
               >
-                {t + " "}
+                <motion.span
+                  variants={headerSpanVariants}
+                  className="block relative"
+                >
+                  {t + " "}
+                </motion.span>
               </motion.span>
-            </motion.span>
-          ))}
-        </motion.h4>
-        <motion.div
-          className="flex flex-col items-end text-end h-min rounded-md pl-2 py-2 cursor-pointer"
-          variants={learnVariants}
-          initial="initial"
-          whileInView="animate"
-          whileHover="hover"
-        >
-          <div className="font-bespokeSlab text-2xl">Learn more</div>
-          <div className="font-bespokeSlab font-black text-4xl">About me</div>
-        </motion.div>
+            ))}
+          </motion.h4>
+          <Button text="Get in touch" shade="darkBorder" />
+          <div className="flex justify-between items-end w-full ">
+            <Image
+              alt="Dosenbach logo"
+              src={dosenbachLogo}
+              className="h-12 w-min"
+            />
+            <Image
+              alt="Elmer Citro logo"
+              src={elmerLogo}
+              className="h-12 w-min"
+            />
+            <Image
+              alt="Weltklasse Zürich logo"
+              src={weltklasseLogo}
+              className="h-12 w-min"
+            />
+            <Image alt="Oppo logo" src={oppoLogo} className="h-12 w-min" />
+          </div>
+        </div>
+        <Image
+          className="w-[40%]"
+          alt="Dashboard of an airplane at Takeoff Birrfeld"
+          src={birrfeld}
+        />
       </div>
-      <div className="font-switzer text-mid2 mb-4">Recent work</div>
-      <div>
-        <Project />
+      <div className="mx-auto flex flex-col justify-end items-center">
+        <p>Scroll to see my work</p>
+        <Image alt="arrow down" src={arrowDown} className="h-12" />
       </div>
     </div>
   );

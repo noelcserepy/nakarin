@@ -7,6 +7,7 @@ import Image from "next/image";
 import Map from "../components/Home/map";
 import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
 import Intro from "../components/Home/intro";
+import Projects from "../components/Home/projects";
 
 export default function Home() {
   const { scrollYProgress } = useScroll({
@@ -22,7 +23,7 @@ export default function Home() {
     >
       <Nav />
 
-      <motion.section className="w-screen h-screen bg-herobg relative text-light overflow-clip">
+      <motion.section className="w-screen h-screen relative text-light overflow-clip">
         <Map />
         {/* <Image
           alt="Nakarin Saisorn portrait"
@@ -62,6 +63,7 @@ export default function Home() {
         style={{ y: yUp }}
       >
         <Intro />
+        <Projects />
       </motion.section>
     </ScrollerMotion>
   );
