@@ -1,4 +1,3 @@
-import RecentWork from "../components/Home/recentwork";
 import Nav from "../components/Nav/nav";
 import { ScrollerMotion } from "scroller-motion";
 import { motion, useTransform, useScroll } from "framer-motion";
@@ -11,15 +10,17 @@ import Projects from "../components/Home/projects";
 import { useRef } from "react";
 
 export default function Home() {
+  const introRef = useRef(null);
   const { scrollYProgress } = useScroll({
+    target: introRef,
     offset: ["end end", "start start"],
   });
   const yUp = useTransform(scrollYProgress, [1, 0], [0, -300]);
 
-  const ref = useRef(null);
+  const projectsRef = useRef(null);
   const { scrollYProgress: darkenProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "start center"],
+    target: projectsRef,
+    offset: ["start end", "start start"],
   });
   const bgColor = useTransform(darkenProgress, [0, 1], ["#ECEEEF", "#090B0C"]);
 
@@ -59,10 +60,10 @@ export default function Home() {
         initial={{ y: 0 }}
         style={{ y: yUp, backgroundColor: bgColor }}
       >
-        <motion.section>
-          <Intro />
+        <motion.section ref={introRef}>
+          <Intro darkenProgress={darkenProgress} />
         </motion.section>
-        <motion.section ref={ref} className="mt-48">
+        <motion.section ref={projectsRef} className="mt-48">
           <Projects />
         </motion.section>
       </motion.div>
