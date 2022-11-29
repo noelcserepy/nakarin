@@ -1,5 +1,6 @@
 import { motion, MotionValue, useTransform } from "framer-motion";
 import birrfeld from "../../public/nakarin_saisorn_takeoff_birrfeld_1.jpg";
+import panthera from "../../public/Panthera_Onca_Web_Nakarin_Fotografie_07.jpg";
 import Image from "next/image";
 import Button from "../Common/button";
 import dosenbachLogo from "public/dosenbach_logo.svg";
@@ -7,6 +8,7 @@ import elmerLogo from "public/elmer_citro_logo.svg";
 import oppoLogo from "public/oppo_logo.svg";
 import weltklasseLogo from "public/weltklasse_zh_logo.svg";
 import arrowDown from "public/arrow_down.svg";
+import Parallax from "../Common/parallax";
 
 const h4Variants = {
   initial: {
@@ -68,7 +70,7 @@ export default function Intro({
   const spanTexts = headerText.split(" ");
 
   return (
-    <div className="flex flex-col px-32 w-full h-screen justify-between">
+    <div className="flex flex-col h-screen justify-between mx-auto max-w-full px-8 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-7xl">
       <div className="flex w-full justify-between mt-72 h-[50%]">
         <div className="flex flex-col justify-between items-start w-1/2 h-full">
           <div className="flex flex-col space-y-16 items-start">
@@ -113,15 +115,21 @@ export default function Intro({
           </div>
         </div>
 
-        <motion.div className="flex justify-end items-start w-5/12 h-min relative">
-          <Image
-            alt="Dashboard of an airplane at Takeoff Birrfeld"
-            src={birrfeld}
-          />
-          <motion.div
-            className="w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-dark"
-            style={{ opacity: overlayOpacity }}
-          />
+        <motion.div className="flex justify-end items-start w-5/12 h-full relative">
+          <Parallax twClass="h-full w-full flex justify-center items-center">
+            <>
+              <Image
+                alt="Hand opening car door."
+                src={panthera}
+                fill
+                style={{ objectPosition: "start start", objectFit: "cover" }}
+              />
+              <motion.div
+                className="w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-dark"
+                style={{ opacity: overlayOpacity }}
+              />
+            </>
+          </Parallax>
         </motion.div>
       </div>
       <div className="mx-auto flex flex-col justify-end items-center">
