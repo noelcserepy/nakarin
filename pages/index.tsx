@@ -1,13 +1,15 @@
-import Nav from "../components/Nav/nav";
+import { useRef } from "react";
 import { ScrollerMotion } from "scroller-motion";
 import { motion, useTransform, useScroll } from "framer-motion";
-import ScrollText from "../components/Home/scrolltext";
 import Image from "next/image";
-import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
+import Nav from "../components/Nav/nav";
 import Intro from "../components/Home/intro";
 import Projects from "../components/Home/projects";
-import { useRef } from "react";
+import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
+import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
+import schlieren from "../public/Schlieren_Wakkerpreis_Drohne__Studio-Gataric__014_Web.jpg";
+import Footer from "../components/Common/footer";
 
 export default function Home() {
   const introRef = useRef(null);
@@ -20,25 +22,24 @@ export default function Home() {
   const projectsRef = useRef(null);
   const { scrollYProgress: darkenProgress } = useScroll({
     target: projectsRef,
-    offset: ["start end", "start start"],
+    offset: ["30% end", "80% end"],
   });
   const bgColor = useTransform(darkenProgress, [0, 1], ["#ECEEEF", "#090B0C"]);
 
   return (
     <ScrollerMotion
       scale={1}
-      spring={
-        // { stiffness: 60, damping: 12, mass: 0.5 }
-        {
-          stiffness: 150,
-          damping: 30,
-          restDelta: 0.1,
-        }
-      }
+      spring={{
+        stiffness: 250,
+        damping: 50,
+        mass: 0.4,
+        restDelta: 0.5,
+      }}
     >
       <Nav />
 
-      <motion.section className="w-screen h-screen relative text-light overflow-clip">
+      <header className="w-screen h-[110vh] relative text-light overflow-clip">
+        {/* Background Image */}
         <Parallax
           twClass="h-full w-full flex items-center justify-center"
           offset={["center center", "end start"]}
@@ -56,28 +57,32 @@ export default function Home() {
             }}
           />
         </Parallax>
-        <motion.div
-          className="w-screen h-screen z-10"
-          initial={{ y: 0 }}
+
+        {/* Overlay */}
+        <div
+          className="w-screen h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-end"
           style={{ zIndex: "10" }}
         >
-          <ScrollText />
-          <div className="font-switzer text-4xl whitespace-pre absolute bottom-4 left-24">
+          <div className="font-switzer text-4xl whitespace-pre text-right px-24">
             {`Freelance Photographer & Videographer`}
           </div>
-        </motion.div>
-      </motion.section>
+          <ScrollText />
+        </div>
+      </header>
 
       <motion.div
         className="z-10"
         initial={{ y: 0 }}
         style={{ y: yUp, backgroundColor: bgColor }}
       >
-        <motion.section ref={introRef}>
+        <motion.section ref={introRef} className="py-24 my-48 h-screen">
           <Intro darkenProgress={darkenProgress} />
         </motion.section>
-        <motion.section ref={projectsRef} className="mt-48">
+        <motion.section ref={projectsRef} className="py-24 my-48 h-screen">
           <Projects />
+        </motion.section>
+        <motion.section className="py-24 my-48 h-screen">
+          <Footer />
         </motion.section>
       </motion.div>
     </ScrollerMotion>

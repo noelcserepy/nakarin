@@ -10,6 +10,19 @@ import weltklasseLogo from "public/weltklasse_zh_logo.svg";
 import arrowDown from "public/arrow_down.svg";
 import Parallax from "../Common/parallax";
 
+const containerVariants = {
+  initial: {
+    y: 0,
+  },
+  animate: {
+    y: 0,
+    transition: {
+      staggerChildren: 0.2,
+      ease: "easeOut",
+    },
+  },
+};
+
 const h4Variants = {
   initial: {
     y: 0,
@@ -17,7 +30,6 @@ const h4Variants = {
   animate: {
     y: 0,
     transition: {
-      delay: 0.3,
       staggerChildren: 0.02,
       ease: "easeOut",
     },
@@ -26,7 +38,7 @@ const h4Variants = {
 
 const headerSpanVariants = {
   initial: {
-    y: 40,
+    y: 50,
   },
   animate: {
     y: 0,
@@ -37,25 +49,34 @@ const headerSpanVariants = {
   },
 };
 
-const learnVariants = {
+const brandVariants = {
   initial: {
-    y: 40,
-    background: "none",
-    color: "#090B0C",
+    y: 20,
+    opacity: 0,
   },
   animate: {
     y: 0,
-    background: "none",
-    color: "#090B0C",
+    opacity: 1,
     transition: {
-      duration: 0.8,
+      duration: 1.2,
       ease: "easeOut",
     },
   },
-  hover: {
-    background: "#090B0C",
-    color: "#ECEEEF",
-    paddingRight: "0.5rem",
+};
+
+const buttonVariants = {
+  initial: {
+    y: 20,
+    opacity: 0,
+  },
+
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.2,
+      ease: "easeOut",
+    },
   },
 };
 
@@ -70,52 +91,66 @@ export default function Intro({
   const spanTexts = headerText.split(" ");
 
   return (
-    <div className="flex flex-col h-screen justify-between mx-auto max-w-full px-8 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-7xl">
-      <div className="flex w-full justify-between mt-72 h-[50%]">
-        <div className="flex flex-col justify-between items-start w-1/2 h-full">
-          <div className="flex flex-col space-y-16 items-start">
-            <motion.h4
-              className="font-switzer font-light text-4xl w-full overflow-hidden flex flex-wrap leading-tight "
-              variants={h4Variants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ amount: "some" }}
-            >
-              {spanTexts.map((t, i) => (
+    <div className="flex flex-col h-full justify-between mx-auto max-w-full px-8 sm:px-0 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-[75rem]">
+      <motion.div
+        className="flex w-full justify-between h-full"
+        variants={containerVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ amount: 0.4 }}
+      >
+        <div className="flex flex-col justify-center space-y-16 items-start w-1/2 h-full">
+          <motion.h4
+            className="font-switzer font-light text-5xl w-full  flex flex-wrap leading-tight "
+            variants={h4Variants}
+          >
+            {spanTexts.map((t, i) => (
+              <motion.span
+                key={i}
+                className="overflow-hidden mr-3 inline-flex relative"
+              >
                 <motion.span
-                  key={i}
-                  className="overflow-hidden mr-3 inline-flex relative"
+                  variants={headerSpanVariants}
+                  className="block relative"
                 >
-                  <motion.span
-                    variants={headerSpanVariants}
-                    className="block relative"
-                  >
-                    {t + " "}
-                  </motion.span>
+                  {t + " "}
                 </motion.span>
-              ))}
-            </motion.h4>
-            <Button text="Get in touch" shade="darkBorder" />
-          </div>
+              </motion.span>
+            ))}
+          </motion.h4>
 
-          <div className="flex justify-between items-center w-full max-h-12 space-x-4">
-            <div className="">
-              <Image alt="Dosenbach logo" src={dosenbachLogo} />
+          <motion.div
+            className="flex justify-start items-center w-full h-12"
+            variants={brandVariants}
+          >
+            <div className="flex justify-center w-full">
+              <Image alt="Oppo logo" src={oppoLogo} className="h-12" />
             </div>
-            <div>
-              <Image alt="Elmer Citro logo" src={elmerLogo} />
+            <div className="flex justify-center w-full">
+              <Image
+                alt="Dosenbach logo"
+                src={dosenbachLogo}
+                className="h-12"
+              />
             </div>
+            <div className="flex justify-center w-full">
+              <Image
+                alt="Weltklasse Zürich logo"
+                src={weltklasseLogo}
+                className="h-12"
+              />
+            </div>
+            <div className="flex justify-center w-full">
+              <Image alt="Elmer Citro logo" src={elmerLogo} className="h-12" />
+            </div>
+          </motion.div>
 
-            <div>
-              <Image alt="Weltklasse Zürich logo" src={weltklasseLogo} />
-            </div>
-            <div>
-              <Image alt="Oppo logo" src={oppoLogo} />
-            </div>
-          </div>
+          <motion.div variants={buttonVariants}>
+            <Button text="Get in touch" shade="darkBorder" size="big" />
+          </motion.div>
         </div>
 
-        <motion.div className="flex justify-end items-start w-5/12 h-full relative">
+        <div className="flex justify-end items-start w-5/12 h-full relative">
           <Parallax twClass="h-full w-full flex justify-center items-center">
             <>
               <Image
@@ -130,12 +165,13 @@ export default function Intro({
               />
             </>
           </Parallax>
-        </motion.div>
-      </div>
-      <div className="mx-auto flex flex-col justify-end items-center">
+        </div>
+      </motion.div>
+
+      {/* <div className="mx-auto flex flex-col justify-end items-center">
         <p>Scroll to see my work</p>
         <Image alt="arrow down" src={arrowDown} className="h-12" />
-      </div>
+      </div> */}
     </div>
   );
 }

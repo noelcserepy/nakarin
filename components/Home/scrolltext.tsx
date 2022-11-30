@@ -36,7 +36,7 @@ function ScrollText({ baseVelocity = 100 }) {
   });
 
   return (
-    <motion.div className="absolute -bottom-2 -left-96 font-switzer font-normal text-[13rem] text-white whitespace-nowrap flex z-50">
+    <motion.div className="font-switzer font-normal text-[13rem] text-white whitespace-nowrap flex z-50">
       <motion.h1 style={{ x: xPercent }}>{"  Nakarin Saisorn - "}</motion.h1>
       <motion.h1 style={{ x: xPercent }}>{"  Nakarin Saisorn - "}</motion.h1>
       <motion.h1 style={{ x: xPercent }}>{"  Nakarin Saisorn - "}</motion.h1>

@@ -21,7 +21,7 @@ export default function Parallax({
     offset: offset,
   });
 
-  const yUp = useTransform(scrollYProgress, [1, 0], [-depth / 2, depth / 2]);
+  const yUp = useTransform(scrollYProgress, [0, 1], [-depth / 2, depth / 2]);
 
   const ySmooth = useSpring(yUp, { stiffness: 600, damping: 100, mass: 1 });
 
