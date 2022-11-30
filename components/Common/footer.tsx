@@ -19,8 +19,16 @@ function Footer() {
             <Button text="+41 76  123  45 67" size="big" shade="light" />
           </div>
           <div className="flex justify-end space-x-4">
-            <Image alt="LinkedIn Logo Icon" src={linkedin} />
-            <Image alt="Instagram Logo Icon" src={insta} />
+            <Image
+              alt="LinkedIn Logo Icon"
+              src={linkedin}
+              className="w-auto h-auto"
+            />
+            <Image
+              alt="Instagram Logo Icon"
+              src={insta}
+              className="w-auto h-auto"
+            />
           </div>
         </div>
       </div>
