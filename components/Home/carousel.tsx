@@ -1,4 +1,4 @@
-import { motion, MotionValue, useMotionValue } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import ProjectSelectContainer from "./projectSelectContainer";
 import RotationContainer from "./rotationContainer";
 
@@ -21,7 +21,7 @@ function Carousel() {
   const rot = useMotionValue(0);
 
   return (
-    <ProjectSelectContainer>
+    <>
       <motion.h3
         className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-full right-24"
         variants={textVariants}
@@ -30,7 +30,6 @@ function Carousel() {
       </motion.h3>
       <RotationContainer left={false}>
         <motion.svg
-          className="absolute h-full"
           viewBox="0.28 0.28 947.49 947.49"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +51,7 @@ function Carousel() {
           />
         </motion.svg>
       </RotationContainer>
-    </ProjectSelectContainer>
+    </>
   );
 }
 

@@ -1,5 +1,4 @@
-import { motion, MotionValue, useMotionValue } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import ProjectSelectContainer from "./projectSelectContainer";
 import RotationContainer from "./rotationContainer";
 
@@ -19,10 +18,8 @@ const textVariants = {
 };
 
 function MovieReel() {
-  const rot = useMotionValue(0);
-
   return (
-    <ProjectSelectContainer>
+    <>
       <motion.h3
         className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-1/2 left-24"
         variants={textVariants}
@@ -31,13 +28,12 @@ function MovieReel() {
       </motion.h3>
       <RotationContainer left={true}>
         <motion.svg
-          className="absolute h-full"
           viewBox="0 0 952 952"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
         >
-          <g clip-path="url(#a)" stroke="#A77946">
+          <g clipPath="url(#a)" stroke="#A77946">
             <path
               d="M946.799 414.093c34.175 259.585-148.557 497.726-408.143 531.901C279.07 980.169 40.93 797.438 6.755 537.852-27.4203 278.266 155.311 40.1254 414.897 5.9502 674.483-28.2249 912.624 154.507 946.799 414.093Z"
               strokeWidth="3.3429"
@@ -202,7 +198,7 @@ function MovieReel() {
           </defs>
         </motion.svg>
       </RotationContainer>
-    </ProjectSelectContainer>
+    </>
   );
 }
 

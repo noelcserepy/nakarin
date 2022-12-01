@@ -28,33 +28,31 @@ const inViewTransition = {
 
 const leftVariants = {
   initial: {
-    x: "100%",
+    x: "50%",
   },
   inView: (i: MotionValue) => ({
-    x: "-50%",
+    x: "0%",
     rotate: i.get() - 1,
     transition: inViewTransition,
   }),
 
   hover: (i: MotionValue) => ({
     rotate: i.get() - 360,
-    x: "-50%",
     transition: hoverTransition,
   }),
 };
 
 const rightVariants = {
   initial: {
-    x: "-100%",
+    x: "-50%",
   },
   inView: (i: MotionValue) => ({
-    x: "50%",
+    x: "0%",
     rotate: i.get() + 1,
     transition: inViewTransition,
   }),
   hover: (i: MotionValue) => ({
     rotate: i.get() + 360,
-    x: "50%",
     transition: hoverTransition,
   }),
 };
@@ -70,9 +68,8 @@ function RotationContainer({
 
   return (
     <motion.div
-      className={`h-full aspect-square absolute top-0 ${
-        left ? "left-full" : "right-full"
-      }`}
+      // switch to w-full when screen aspect ratio flips to portrait
+      className={`h-full aspect-square`}
       variants={left ? leftVariants : rightVariants}
       custom={rot}
       style={{ originX: 0.5, originY: 0.5, rotate: rot }}
