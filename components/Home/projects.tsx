@@ -8,6 +8,7 @@ import MovieReel from "./movieReel";
 import Carousel from "./carousel";
 import { useEffect, useState } from "react";
 import ProjectSelectContainer from "./projectSelectContainer";
+import RotationContainer from "./rotationContainer";
 
 const lineVariants = {
   initial: {
@@ -18,6 +19,36 @@ const lineVariants = {
     transition: {
       duration: 2,
       ease: "easeInOut",
+    },
+  },
+};
+
+const textVariantsLeft = {
+  initial: {
+    opacity: 0,
+    x: 5,
+  },
+  hover: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
+};
+
+const textVariantsRight = {
+  initial: {
+    opacity: 0,
+    x: -5,
+  },
+  hover: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
     },
   },
 };
@@ -35,8 +66,6 @@ function Projects() {
   const centerLinePercent = useMotionTemplate`${centerLine}%`;
 
   useEffect(() => {
-    console.log("Left: " + hoverLeft.toString());
-    console.log("Right: " + hoverRight.toString());
     if (hoverLeft) {
       animate(centerLine, 55, centerLineTransition);
     }
@@ -46,10 +75,13 @@ function Projects() {
     if (!hoverRight && !hoverLeft) {
       animate(centerLine, 50, centerLineTransition);
     }
+    if (hoverRight && hoverLeft) {
+      animate(centerLine, 50, centerLineTransition);
+    }
   }, [hoverLeft, hoverRight]);
 
   return (
-    <div className="h-full flex justify-center items-center sticky top-10">
+    <motion.div className="flex justify-center items-center">
       <motion.div
         className="w-screen h-[90vh] relative"
         initial="initial"
@@ -62,7 +94,15 @@ function Projects() {
           setHoverRight={setHoverRight}
           centerLine={centerLine}
         >
-          <MovieReel />
+          <motion.h3
+            className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-1/2 left-24"
+            variants={textVariantsLeft}
+          >
+            Video
+          </motion.h3>
+          <RotationContainer left={true}>
+            <MovieReel />
+          </RotationContainer>
         </ProjectSelectContainer>
 
         <motion.div
@@ -79,10 +119,18 @@ function Projects() {
           setHoverRight={setHoverRight}
           centerLine={centerLine}
         >
-          <Carousel />
+          <motion.h3
+            className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-full right-24"
+            variants={textVariantsRight}
+          >
+            Photo
+          </motion.h3>
+          <RotationContainer left={false}>
+            <Carousel />
+          </RotationContainer>
         </ProjectSelectContainer>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 

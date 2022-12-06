@@ -27,7 +27,14 @@ export default function Parallax({
 
   return (
     <motion.div ref={imageRef} className={`overflow-clip ${twClass}`}>
-      <motion.div style={{ y: ySmooth, height: `${zoom}%`, width: `${zoom}%` }}>
+      <motion.div
+        style={{
+          y: ySmooth,
+          height: `${zoom}%`,
+          width: `${zoom}%`,
+          position: "relative",
+        }}
+      >
         {children}
       </motion.div>
     </motion.div>

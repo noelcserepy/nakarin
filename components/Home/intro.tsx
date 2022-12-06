@@ -152,7 +152,7 @@ export default function Intro({
 
         <div className="flex justify-end items-start w-5/12 h-full relative">
           <Parallax twClass="h-full w-full flex justify-center items-center">
-            <>
+            <div className="h-full w-full">
               <Image
                 alt="Hand opening car door."
                 src={panthera}
@@ -163,7 +163,7 @@ export default function Intro({
                 className="w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-dark"
                 style={{ opacity: overlayOpacity }}
               />
-            </>
+            </div>
           </Parallax>
         </div>
       </motion.div>

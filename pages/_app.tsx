@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import { motion } from "framer-motion";
-import { ScrollerMotion } from "scroller-motion";
 
 const switzer = localFont({
   src: "./Switzer-Variable.woff2",
@@ -49,7 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ${bespokeSlab.variable} 
       ${bespokeSlabItalic.variable} 
       ${technor.variable}  
-      h-full w-screen overflow-x-hidden text-switzer bg-light text-dark`}
+      h-full w-screen font-sans bg-light text-dark`}
     >
       <Component {...pageProps} />
     </motion.main>

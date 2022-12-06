@@ -22,7 +22,7 @@ export default function Home() {
   const projectsRef = useRef(null);
   const { scrollYProgress: darkenProgress } = useScroll({
     target: projectsRef,
-    offset: ["30% end", "80% end"],
+    offset: ["30% end", "50% end"],
   });
   const bgColor = useTransform(darkenProgress, [0, 1], ["#ECEEEF", "#090B0C"]);
 
@@ -78,10 +78,13 @@ export default function Home() {
         <motion.section ref={introRef} className="py-24 my-48 h-screen">
           <Intro darkenProgress={darkenProgress} />
         </motion.section>
-        <motion.section ref={projectsRef} className="py-24 my-48 h-screen">
+        <motion.section
+          ref={projectsRef}
+          className="py-24 my-48 h-[150vh] flex items-center"
+        >
           <Projects />
         </motion.section>
-        <motion.section className="py-24 my-48 h-screen">
+        <motion.section className="py-24 my-48 h-screen flex items-center">
           <Footer />
         </motion.section>
       </motion.div>

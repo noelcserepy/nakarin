@@ -28,10 +28,12 @@ export default function Button({
   text = "button",
   shade = "light",
   size = "small",
+  onClick,
 }: {
   text?: string;
   shade?: string;
   size?: string;
+  onClick?: Function;
 }) {
   interface Shades {
     [index: string]: string;
@@ -74,6 +76,7 @@ export default function Button({
       className={`font-bespokeSlab font-bold text-lg ${shades[shade]} ${sizes[size]}`}
       variants={buttonVariants}
       whileHover="hover"
+      onClick={() => onClick && onClick()}
     >
       {text}
     </motion.button>
