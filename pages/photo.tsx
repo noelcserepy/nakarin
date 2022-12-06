@@ -7,15 +7,13 @@ import arrowDown from "../public/graphics/arrow_down.svg";
 import arrowUp from "../public/graphics/arrow_up.svg";
 import ProjectImage from "../components/Work/projectImage";
 import projectData from "../components/Work/projectData";
-import useScrollListener from "../hooks/useScrollListener";
 import useIndexScroller from "../hooks/useIndexScroller";
+import { useEffect } from "react";
 
 function Photo() {
-  const { currentIndex, setCurrentIndex } = useIndexScroller(
-    0,
-    projectData.length - 1
-  );
-  const { goingUp, goingDown } = useScrollListener();
+  const { currentIndex } = useIndexScroller(0, projectData.length - 1);
+
+  const currentProject = projectData[currentIndex];
 
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-between">
@@ -30,8 +28,11 @@ function Photo() {
         </button>
         <div className="w-full flex flex-col justify-between items-start space-y-8">
           <div className="flex flex-col ">
-            <p>2020 Zürich</p>
-            <h2 className="text-8xl font-extrabold">Michel Freudenberg</h2>
+            <p>
+              <span>{currentProject.yearStart}</span>{" "}
+              <span>{currentProject.location}</span>
+            </p>
+            <h2 className="text-8xl font-extrabold">{currentProject.name}</h2>
           </div>
           <Button shade="lightFull" size="small" text="Explore" />
         </div>
@@ -43,6 +44,7 @@ function Photo() {
           <ProjectImage
             key={index}
             currentIndex={currentIndex}
+            maxIndex={projectData.length - 1}
             project={project}
           />
         ))}

@@ -1,30 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// react hook that detects if user is scrolling up or down and returns two values: goingUp and goingDown. Using wheel event listener.
 function useIndexScroller(startIndex: number, maxIndex: number) {
   const [currentIndex, setCurrentIndex] = useState(startIndex);
-  console.log("MaxIndex" + maxIndex);
+  const indexRef = useRef(startIndex);
 
   useEffect(() => {
     function handleScroll(e: WheelEvent) {
       if (e.deltaY > 0) {
-        if (currentIndex + 1 > maxIndex) {
-          setCurrentIndex(0);
+        if (indexRef.current === maxIndex) {
+          indexRef.current = 0;
         } else {
-          setCurrentIndex(currentIndex + 1);
-          console.log("currentIndex" + currentIndex);
+          indexRef.current += 1;
         }
       }
       if (e.deltaY < 0) {
-        if (currentIndex - 1 < 0) {
-          setCurrentIndex(maxIndex);
+        if (indexRef.current - 1 < 0) {
+          indexRef.current = maxIndex;
         } else {
-          setCurrentIndex(currentIndex - 1);
+          indexRef.current -= 1;
         }
       }
+      setCurrentIndex(indexRef.current);
+      console.log("currentIndex", indexRef.current);
     }
 
-    console.log(currentIndex);
     window.addEventListener("wheel", handleScroll, { passive: true });
 
     return () => {
@@ -32,7 +31,7 @@ function useIndexScroller(startIndex: number, maxIndex: number) {
     };
   }, []);
 
-  return { currentIndex, setCurrentIndex };
+  return { currentIndex };
 }
 
 export default useIndexScroller;
