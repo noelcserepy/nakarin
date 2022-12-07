@@ -6,11 +6,11 @@ const transition = { duration: 0.5, ease: "easeOut" };
 const imageVariants: any = {
   initial: {
     opacity: "none",
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   isCurrent: {
     opacity: 1,
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   isPrevious: {
     opacity: 1,
@@ -18,7 +18,7 @@ const imageVariants: any = {
     rotate: 30,
     scale: 1,
     zIndex: -1,
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   isNext: {
     opacity: 1,
@@ -26,17 +26,17 @@ const imageVariants: any = {
     rotate: -30,
     scale: 1,
     zIndex: -11,
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   isUpcoming: {
     display: "none",
     rotate: 60,
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   isPassed: {
     display: "none",
     rotate: -60,
-    transition,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 

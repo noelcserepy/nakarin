@@ -30,6 +30,9 @@ module.exports = {
         "gradient-radial": "radial-gradient(circle, var(--tw-gradient-stops))",
         vignette: "radial-gradient(circle, transparent 50%, #090B0C 110%)",
       },
+      aspectRatio: {
+        "3/2": "3 / 2",
+      },
     },
   },
   plugins: [],

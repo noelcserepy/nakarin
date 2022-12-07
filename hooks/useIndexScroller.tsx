@@ -1,12 +1,15 @@
+import { useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 function useIndexScroller(startIndex: number, maxIndex: number) {
   const [currentIndex, setCurrentIndex] = useState(startIndex);
   const indexRef = useRef(startIndex);
+  const totalScroll = useMotionValue(0);
 
   useEffect(() => {
     function handleScroll(e: WheelEvent) {
       if (e.deltaY > 0) {
+        totalScroll.set(totalScroll.get() + 1);
         if (indexRef.current === maxIndex) {
           indexRef.current = 0;
         } else {
@@ -14,6 +17,7 @@ function useIndexScroller(startIndex: number, maxIndex: number) {
         }
       }
       if (e.deltaY < 0) {
+        totalScroll.set(totalScroll.get() - 1);
         if (indexRef.current - 1 < 0) {
           indexRef.current = maxIndex;
         } else {
@@ -31,7 +35,7 @@ function useIndexScroller(startIndex: number, maxIndex: number) {
     };
   }, []);
 
-  return { currentIndex };
+  return { currentIndex, totalScroll };
 }
 
 export default useIndexScroller;
