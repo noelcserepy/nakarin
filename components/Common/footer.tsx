@@ -1,6 +1,6 @@
 import Button from "./button";
-import insta from "../../public/instagram_logo.svg";
-import linkedin from "../../public/linkedin_logo.svg";
+import insta from "../../public/logos/instagram_logo.svg";
+import linkedin from "../../public/logos/linkedin_logo.svg";
 import Image from "next/image";
 
 function Footer() {

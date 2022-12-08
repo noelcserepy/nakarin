@@ -9,6 +9,7 @@ import Carousel from "./carousel";
 import { useEffect, useState } from "react";
 import ProjectSelectContainer from "./projectSelectContainer";
 import RotationContainer from "./rotationContainer";
+import { useRouter } from "next/router";
 
 const lineVariants = {
   initial: {
@@ -62,6 +63,8 @@ function Projects() {
   const [hoverLeft, setHoverLeft] = useState(false);
   const [hoverRight, setHoverRight] = useState(false);
 
+  const router = useRouter();
+
   const centerLine = useMotionValue(50);
   const centerLinePercent = useMotionTemplate`${centerLine}%`;
 
@@ -80,6 +83,10 @@ function Projects() {
     }
   }, [hoverLeft, hoverRight]);
 
+  function clickHandler(): void {
+    router.push("/photo");
+  }
+
   return (
     <motion.div className="flex justify-center items-center">
       <motion.div
@@ -93,6 +100,7 @@ function Projects() {
           setHoverLeft={setHoverLeft}
           setHoverRight={setHoverRight}
           centerLine={centerLine}
+          handleClick={clickHandler}
         >
           <motion.h3
             className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-1/2 left-24"
@@ -118,6 +126,7 @@ function Projects() {
           setHoverLeft={setHoverLeft}
           setHoverRight={setHoverRight}
           centerLine={centerLine}
+          handleClick={clickHandler}
         >
           <motion.h3
             className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-full right-24"

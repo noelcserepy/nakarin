@@ -28,12 +28,14 @@ function ProjectSelectContainer({
   setHoverLeft,
   setHoverRight,
   centerLine,
+  handleClick,
 }: {
   children?: React.ReactNode;
   left: boolean;
   setHoverLeft?: Function;
   setHoverRight?: Function;
   centerLine: MotionValue;
+  handleClick: any;
 }) {
   const [enterComplete, setEnterComplete] = useState(false);
 
@@ -87,6 +89,7 @@ function ProjectSelectContainer({
       onAnimationComplete={() => setEnterComplete(true)}
       onViewportLeave={() => setEnterComplete(false)}
       style={{ clipPath, zIndex }}
+      onClick={handleClick}
     >
       {children}
     </motion.div>

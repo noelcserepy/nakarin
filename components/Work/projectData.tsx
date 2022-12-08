@@ -8,18 +8,6 @@ import thumb6 from "../../public/projects/panthera_onca/Panthera_Onca_Web_Nakari
 import thumb7 from "../../public/projects/takeoff_birrfeld/Birrfeld_Web_Nakarin_Fotografie_03.jpg";
 import thumb8 from "../../public/projects/tremondi_quinten/Quinten_Whg2OG__Nakarin-Fotografie__130_Web.jpg";
 
-// const thumbs = [
-//   thumb0,
-//   thumb1,
-//   thumb2,
-//   thumb3,
-//   thumb4,
-//   thumb5,
-//   thumb6,
-//   thumb7,
-//   thumb8,
-// ];
-
 const projectData = [
   {
     index: 0,

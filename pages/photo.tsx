@@ -10,6 +10,7 @@ import BgCarousel from "../components/Work/bgCarousel";
 import MainImage from "../components/Work/mainImage";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const projectVariants = {
   hidden: {
@@ -60,10 +61,14 @@ function Photo() {
   const [currentProject, setCurrentProject] = useState(
     projectData[currentIndex]
   );
-  const [laggingIndex, setlaggingIndex] = useState(currentIndex);
+  const [laggingTotalScroll, setLaggingTotalScroll] = useState(
+    totalScroll.get()
+  );
   const controls = useAnimationControls();
 
   useEffect(() => {
+    console.log("totalScroll: ", totalScroll);
+    console.log("laggingTotalScroll: ", laggingTotalScroll);
     const nextSequence = async () => {
       await controls.start("next");
       controls.set("hidden");
@@ -77,12 +82,12 @@ function Photo() {
       setCurrentProject(projectData[currentIndex]);
       await controls.start("visible");
     };
-    if (currentIndex < laggingIndex) {
+    if (totalScroll.get() < laggingTotalScroll) {
       prevSequence();
-      setlaggingIndex(currentIndex);
+      setLaggingTotalScroll(totalScroll.get());
     } else {
       nextSequence();
-      setlaggingIndex(currentIndex);
+      setLaggingTotalScroll(totalScroll.get());
     }
   }, [currentIndex]);
 
@@ -90,12 +95,14 @@ function Photo() {
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-between p-8">
       <BgCarousel totalScroll={totalScroll} />
 
-      <div className="fixed top-8 mx-8 flex items-start">
-        <button className="flex items-center space-x-4">
-          <Image src={arrowLeft} alt="arrow left" />
-          <p>Back</p>
-        </button>
-      </div>
+      <Link href="/" scroll={false}>
+        <div className="fixed top-8 mx-8 flex items-start">
+          <button className="flex items-center space-x-4">
+            <Image src={arrowLeft} alt="arrow left" />
+            <p>Back</p>
+          </button>
+        </div>
+      </Link>
 
       <motion.div
         className="h-full w-full flex items-center justify-between"
@@ -121,7 +128,7 @@ function Photo() {
           </div>
         </motion.div>
 
-        <div className="h-full w-6/12 flex items-center justify-center px-8 relative">
+        <div className="h-full w-6/12 flex items-center justify-end pl-8 relative">
           <MainImage project={currentProject} currentIndex={currentIndex} />
           <PrevAndNextImages
             projectData={projectData}
