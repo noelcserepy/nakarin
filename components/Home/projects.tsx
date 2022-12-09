@@ -4,12 +4,13 @@ import {
   useMotionTemplate,
   useMotionValue,
 } from "framer-motion";
-import MovieReel from "./movieReel";
-import Carousel from "./carousel";
+import movieReel from "../../public/graphics/movie_reel.svg";
+import carousel from "../../public/graphics/carousel.svg";
 import { useEffect, useState } from "react";
 import ProjectSelectContainer from "./projectSelectContainer";
 import RotationContainer from "./rotationContainer";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const lineVariants = {
   initial: {
@@ -18,7 +19,7 @@ const lineVariants = {
   inView: {
     height: "100%",
     transition: {
-      duration: 2,
+      duration: 1,
       ease: "easeInOut",
     },
   },
@@ -26,30 +27,30 @@ const lineVariants = {
 
 const textVariantsLeft = {
   initial: {
-    opacity: 0,
+    opacity: 0.2,
     x: 5,
   },
   hover: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.3,
-      ease: "easeIn",
+      duration: 0.6,
+      ease: "easeOut",
     },
   },
 };
 
 const textVariantsRight = {
   initial: {
-    opacity: 0,
+    opacity: 0.2,
     x: -5,
   },
   hover: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.3,
-      ease: "easeIn",
+      duration: 0.6,
+      ease: "easeOut",
     },
   },
 };
@@ -87,6 +88,11 @@ function Projects() {
     router.push("/photo");
   }
 
+  useEffect(() => {
+    router.prefetch("/photo");
+    router.prefetch("/video");
+  }, []);
+
   return (
     <motion.div className="flex justify-center items-center">
       <motion.div
@@ -103,13 +109,13 @@ function Projects() {
           handleClick={clickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-1/2 left-24"
+            className="absolute z-20 text-light font-switzer font-extrabold text-8xl tracking-wide left-24"
             variants={textVariantsLeft}
           >
             Video
           </motion.h3>
           <RotationContainer left={true}>
-            <MovieReel />
+            <Image src={movieReel} alt="Movie Reel graphic" />
           </RotationContainer>
         </ProjectSelectContainer>
 
@@ -129,13 +135,13 @@ function Projects() {
           handleClick={clickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-light font-switzer font-extrabold text-5xl top-1/2 -translate-y-full right-24"
+            className="absolute z-20 text-light font-switzer font-extrabold text-8xl tracking-wide -translate-y-50% right-24"
             variants={textVariantsRight}
           >
             Photo
           </motion.h3>
           <RotationContainer left={false}>
-            <Carousel />
+            <Image src={carousel} alt="Slide show carousel graphic" />
           </RotationContainer>
         </ProjectSelectContainer>
       </motion.div>

@@ -19,31 +19,31 @@ const imageVariants = {
 
 const shutterVariants = {
   hidden: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -100%, #090B0C 0%)",
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
     transition: {
-      duration: 0.06,
+      duration: 0.14,
       ease: "linear",
     },
   },
   next: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -100%, #090B0C 0%)",
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
     transition: {
-      duration: 0.06,
+      duration: 0.14,
       ease: "linear",
     },
   },
   prev: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -100%, #090B0C 0%)",
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
     transition: {
-      duration: 0.06,
+      duration: 0.14,
       ease: "linear",
     },
   },
   visible: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) 100%, #090B0C 200%)",
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) 199%, #090B0C 200%)",
     transition: {
       delay: 0.3,
-      duration: 0.06,
+      duration: 0.14,
       ease: "linear",
     },
   },

@@ -117,7 +117,7 @@ function PrevAndNextImages({
   };
 
   const transition = {
-    delay: 0.1,
+    delay: 0,
     duration: 0.3,
     ease: "easeIn",
   };

@@ -78,7 +78,7 @@ function ProjectSelectContainer({
 
   return (
     <motion.div
-      className="h-full w-full absolute cursor-pointer top-0 left-0 flex justify-center items-center "
+      className="h-full w-full absolute cursor-pointer top-0 left-0 flex justify-center items-center"
       variants={containerVariants}
       initial="initial"
       custom={left}

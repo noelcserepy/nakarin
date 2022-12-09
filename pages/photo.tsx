@@ -1,6 +1,5 @@
 import Button from "../components/Common/button";
 import Image from "next/image";
-import arrowLeft from "../public/graphics/arrow_left.svg";
 import arrowDown from "../public/graphics/arrow_down.svg";
 import arrowUp from "../public/graphics/arrow_up.svg";
 import projectData from "../components/Work/projectData";
@@ -10,7 +9,7 @@ import BgCarousel from "../components/Work/bgCarousel";
 import MainImage from "../components/Work/mainImage";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import WorkNav from "../components/Work/workNav";
 
 const projectVariants = {
   hidden: {
@@ -47,7 +46,8 @@ const textVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
+      delay: 0.3,
+      duration: 0.14,
       ease: "easeOut",
     },
   },
@@ -61,51 +61,27 @@ function Photo() {
   const [currentProject, setCurrentProject] = useState(
     projectData[currentIndex]
   );
-  const [laggingTotalScroll, setLaggingTotalScroll] = useState(
-    totalScroll.get()
-  );
+
   const controls = useAnimationControls();
 
   useEffect(() => {
-    console.log("totalScroll: ", totalScroll);
-    console.log("laggingTotalScroll: ", laggingTotalScroll);
     const nextSequence = async () => {
       await controls.start("next");
-      controls.set("hidden");
       setCurrentProject(projectData[currentIndex]);
       await controls.start("visible");
     };
 
-    const prevSequence = async () => {
-      await controls.start("prev");
-      controls.set("next");
-      setCurrentProject(projectData[currentIndex]);
-      await controls.start("visible");
-    };
-    if (totalScroll.get() < laggingTotalScroll) {
-      prevSequence();
-      setLaggingTotalScroll(totalScroll.get());
-    } else {
-      nextSequence();
-      setLaggingTotalScroll(totalScroll.get());
-    }
+    nextSequence();
   }, [currentIndex]);
 
   return (
-    <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-between p-8">
+    <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
       <BgCarousel totalScroll={totalScroll} />
 
-      <Link href="/" scroll={false}>
-        <div className="fixed top-8 mx-8 flex items-start">
-          <button className="flex items-center space-x-4">
-            <Image src={arrowLeft} alt="arrow left" />
-            <p>Back</p>
-          </button>
-        </div>
-      </Link>
+      <WorkNav />
 
       <motion.div
-        className="h-full w-full flex items-center justify-between"
+        className="h-full w-full max-w-[100rem] flex items-center justify-between"
         variants={projectVariants}
         animate={controls}
         initial="hidden"
@@ -120,7 +96,7 @@ function Photo() {
                 <span>{currentProject.yearStart}</span>{" "}
                 <span>{currentProject.location}</span>
               </p>
-              <h2 className="text-8xl font-extrabold text-start">
+              <h2 className="text-8xl font-extrabold text-start tracking-wide">
                 {currentProject.name}
               </h2>
             </div>

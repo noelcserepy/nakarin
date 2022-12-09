@@ -16,7 +16,7 @@ const hoverTransition = {
 
 const inViewTransition = {
   x: {
-    duration: 2,
+    duration: 1,
     delay: 0,
     ease: "easeOut",
   },
