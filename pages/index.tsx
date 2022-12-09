@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
     <>
-      <Nav />
+      <Nav back={false} />
       <ScrollerMotion
         scale={1}
         spring={{

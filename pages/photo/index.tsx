@@ -1,15 +1,15 @@
-import Button from "../components/Common/button";
+import Button from "../../components/Common/button";
 import Image from "next/image";
-import arrowDown from "../public/graphics/arrow_down.svg";
-import arrowUp from "../public/graphics/arrow_up.svg";
-import projectData from "../components/Work/projectData";
-import useIndexScroller from "../hooks/useIndexScroller";
-import PrevAndNextImages from "../components/Work/prevAndNextImages";
-import BgCarousel from "../components/Work/bgCarousel";
-import MainImage from "../components/Work/mainImage";
+import arrowDown from "../../public/graphics/arrow_down.svg";
+import arrowUp from "../../public/graphics/arrow_up.svg";
+import projectData from "../../components/Work/projectData";
+import useIndexScroller from "../../hooks/useIndexScroller";
+import PrevAndNextImages from "../../components/Work/prevAndNextImages";
+import BgCarousel from "../../components/Work/bgCarousel";
+import MainImage from "../../components/Work/mainImage";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
-import Nav from "../components/Nav/nav";
+import Nav from "../../components/Nav/nav";
 
 const projectVariants = {
   hidden: {

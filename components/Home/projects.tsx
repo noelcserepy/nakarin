@@ -89,8 +89,8 @@ function Projects() {
   }
 
   useEffect(() => {
-    router.prefetch("/photo");
-    router.prefetch("/video");
+    router.prefetch("/work/photo");
+    router.prefetch("/work/video");
   }, []);
 
   return (
