@@ -1,7 +1,5 @@
 import Button from "./button";
-import insta from "../../public/logos/instagram_logo.svg";
-import linkedin from "../../public/logos/linkedin_logo.svg";
-import Image from "next/image";
+import Socials from "./socials";
 
 function Footer() {
   return (
@@ -10,7 +8,7 @@ function Footer() {
         <h3 className="text-8xl text-light mb-12">Let's work together</h3>
       </div>
 
-      <div className="border-b border-light h-0" />
+      <div className="border-b border-light h-0 " />
 
       <div className="h-[40%]">
         <div className="flex justify-between mt-12">
@@ -18,18 +16,7 @@ function Footer() {
             <Button text="nakarin@nakarin.ch" size="big" shade="light" />
             <Button text="+41 76  123  45 67" size="big" shade="light" />
           </div>
-          <div className="flex justify-end space-x-4">
-            <Image
-              alt="LinkedIn Logo Icon"
-              src={linkedin}
-              className="w-auto h-auto"
-            />
-            <Image
-              alt="Instagram Logo Icon"
-              src={insta}
-              className="w-auto h-auto"
-            />
-          </div>
+          <Socials />
         </div>
       </div>
     </div>

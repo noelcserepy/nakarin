@@ -85,7 +85,7 @@ function Projects() {
   }, [hoverLeft, hoverRight]);
 
   function clickHandler(): void {
-    router.push("/photo");
+    router.push("/photo", undefined, { scroll: true });
   }
 
   useEffect(() => {
@@ -109,7 +109,7 @@ function Projects() {
           handleClick={clickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-light font-switzer font-extrabold text-8xl tracking-wide left-24"
+            className="absolute z-20 text-title left-24"
             variants={textVariantsLeft}
           >
             Video
@@ -135,7 +135,7 @@ function Projects() {
           handleClick={clickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-light font-switzer font-extrabold text-8xl tracking-wide -translate-y-50% right-24"
+            className="absolute z-20 text-title -translate-y-50% right-24"
             variants={textVariantsRight}
           >
             Photo

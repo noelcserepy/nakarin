@@ -7,8 +7,7 @@ import Intro from "../components/Home/intro";
 import Projects from "../components/Home/projects";
 import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
-import tremondi from "../public/nakarin_saisorn_tremondi_quinten_1.jpg";
-import schlieren from "../public/Schlieren_Wakkerpreis_Drohne__Studio-Gataric__014_Web.jpg";
+import takeoff from "../public/projects/takeoff_birrfeld/Birrfeld_Web_Nakarin_Fotografie_02.jpg";
 import Footer from "../components/Common/footer";
 
 export default function Home() {
@@ -27,67 +26,69 @@ export default function Home() {
   const bgColor = useTransform(darkenProgress, [0, 1], ["#ECEEEF", "#090B0C"]);
 
   return (
-    <ScrollerMotion
-      scale={1}
-      spring={{
-        stiffness: 250,
-        damping: 50,
-        mass: 0.4,
-        restDelta: 0.5,
-      }}
-    >
+    <>
       <Nav />
-
-      <header className="w-screen h-[110vh] relative text-light overflow-clip">
-        {/* Background Image */}
-        <Parallax
-          twClass="h-full w-full flex items-center justify-center"
-          offset={["center center", "end start"]}
-          depth={100}
-          zoom={120}
-        >
-          <Image
-            alt="Nakarin Saisorn - Tremondi Quinten Interior"
-            src={tremondi}
-            priority
-            fill
-            style={{
-              objectFit: "cover",
-              objectPosition: "center center",
-            }}
-          />
-        </Parallax>
-
-        {/* Overlay */}
-        <div
-          className="w-screen h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-end"
-          style={{ zIndex: "10" }}
-        >
-          <div className="font-switzer text-4xl whitespace-pre text-right px-24">
-            {`Freelance Photographer & Videographer`}
-          </div>
-          <ScrollText />
-        </div>
-      </header>
-
-      <motion.div
-        className="z-10"
-        initial={{ y: 0 }}
-        style={{ y: yUp, backgroundColor: bgColor }}
+      <ScrollerMotion
+        scale={1}
+        spring={{
+          stiffness: 250,
+          damping: 50,
+          mass: 0.4,
+          restDelta: 0.5,
+        }}
       >
-        <motion.section ref={introRef} className="py-24 my-48 h-screen">
-          <Intro darkenProgress={darkenProgress} />
-        </motion.section>
-        <motion.section
-          ref={projectsRef}
-          className="py-24 my-48 h-[150vh] flex items-center"
+        <header className="w-screen h-[110vh] relative text-light overflow-clip">
+          {/* Background Image */}
+          <Parallax
+            twClass="h-full w-full flex items-center justify-center"
+            offset={["center center", "end start"]}
+            depth={100}
+            zoom={120}
+          >
+            <Image
+              alt="Nakarin Saisorn - Tremondi Quinten Interior"
+              src={takeoff}
+              priority
+              fill
+              style={{
+                objectFit: "cover",
+                objectPosition: "center center",
+              }}
+            />
+          </Parallax>
+
+          {/* Overlay */}
+          <div
+            className="w-screen h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-end"
+            style={{ zIndex: "10" }}
+          >
+            <div className="font-switzer text-4xl whitespace-pre text-right px-24">
+              {`Freelance Photographer & Videographer`}
+            </div>
+            <ScrollText />
+          </div>
+        </header>
+
+        <motion.div
+          className="z-10"
+          initial={{ y: 0 }}
+          style={{ y: yUp, backgroundColor: bgColor }}
         >
-          <Projects />
-        </motion.section>
-        <motion.section className="py-24 my-48 h-screen flex items-center">
-          <Footer />
-        </motion.section>
-      </motion.div>
-    </ScrollerMotion>
+          <motion.section ref={introRef} className="py-24 my-48 h-screen">
+            <Intro darkenProgress={darkenProgress} />
+          </motion.section>
+          <motion.section
+            id="projects"
+            ref={projectsRef}
+            className="py-24 my-48 h-[150vh] flex items-center"
+          >
+            <Projects />
+          </motion.section>
+          <motion.section className="py-24 my-48 h-screen flex items-center">
+            <Footer />
+          </motion.section>
+        </motion.div>
+      </ScrollerMotion>
+    </>
   );
 }

@@ -9,7 +9,7 @@ import BgCarousel from "../components/Work/bgCarousel";
 import MainImage from "../components/Work/mainImage";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
-import WorkNav from "../components/Work/workNav";
+import Nav from "../components/Nav/nav";
 
 const projectVariants = {
   hidden: {
@@ -76,9 +76,9 @@ function Photo() {
 
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
-      <BgCarousel totalScroll={totalScroll} />
+      <Nav />
 
-      <WorkNav />
+      <BgCarousel totalScroll={totalScroll} />
 
       <motion.div
         className="h-full w-full max-w-[100rem] flex items-center justify-between"
@@ -96,9 +96,7 @@ function Photo() {
                 <span>{currentProject.yearStart}</span>{" "}
                 <span>{currentProject.location}</span>
               </p>
-              <h2 className="text-8xl font-extrabold text-start tracking-wide">
-                {currentProject.name}
-              </h2>
+              <h2 className="text-title">{currentProject.name}</h2>
             </div>
             <Button shade="lightFull" size="small" text="Explore" />
           </div>

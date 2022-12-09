@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .text-title {
+    @apply font-switzer text-8xl font-extrabold text-start tracking-wide text-light;
+  }
+  .text-subtitle {
+    @apply font-switzer font-light text-2xl text-light;
+  }
+  .text-paragraph {
+    @apply font-switzer font-light text-light;
+  }
+}
+
 body::-webkit-scrollbar {
   display: none;
 }

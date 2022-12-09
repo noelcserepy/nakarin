@@ -1,58 +1,29 @@
+import Image from "next/image";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Button from "../Common/button";
-
-const navVariants = {
-  initial: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  initial: {
-    opacity: 0,
-    y: -15,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-    },
-  },
-};
+import arrowLeft from "../../public/graphics/arrow_left.svg";
+import menuIcon from "../../public/graphics/menu_icon.svg";
 
 function Nav() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.push("/", undefined, { scroll: true });
+  };
   return (
-    <motion.div
-      className="absolute top-0 w-screen h-20 flex justify-between items-center px-24 z-10 [&>*]:cursor-pointer"
-      variants={navVariants}
-      initial="initial"
-      animate="animate"
-    >
-      <motion.div variants={itemVariants}>
-        <Button text="Nakarin" shade="light" />
-      </motion.div>
-      <motion.div className="flex space-x-8 items-center">
-        <motion.div variants={itemVariants}>
-          <Button text="Work" shade="light" />
-        </motion.div>
-        <motion.div variants={itemVariants}>
-          <Button text="About" shade="light" />
-        </motion.div>
-        <motion.div variants={itemVariants}>
-          <Button text="Contact" shade="lightBorder" />
-        </motion.div>
-      </motion.div>
-    </motion.div>
+    <div className="fixed top-8 px-8 flex justify-between w-full z-50">
+      <button
+        className="flex items-center space-x-4 cursor-pointer"
+        onClick={handleBack}
+      >
+        <Image src={arrowLeft} alt="arrow left" />
+        <p className="text-paragraph">Back</p>
+      </button>
+      <div className="bg-light flex items-center justify-center p-2 rounded aspect-square">
+        <Image src={menuIcon} alt="menu icon" />
+      </div>
+    </div>
   );
 }
 
