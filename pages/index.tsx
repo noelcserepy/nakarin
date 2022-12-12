@@ -7,7 +7,7 @@ import Intro from "../components/Home/intro";
 import Projects from "../components/Home/projects";
 import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
-import takeoff from "../public/projects/takeoff_birrfeld/Birrfeld_Web_Nakarin_Fotografie_02.jpg";
+import takeoff from "../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakarin-saisorn-1.jpg";
 import Footer from "../components/Common/footer";
 
 export default function Home() {

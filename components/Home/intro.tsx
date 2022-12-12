@@ -1,5 +1,5 @@
 import { motion, MotionValue, useTransform } from "framer-motion";
-import panthera from "../../public/projects/panthera_onca/Panthera_Onca_Web_Nakarin_Fotografie_07.jpg";
+import panthera from "../../public/projects/panthera_onca/panthera-onca-nakarin-saisorn-6.jpg";
 import Image from "next/image";
 import Button from "../Common/button";
 import dosenbachLogo from "public/logos/dosenbach_logo.svg";
