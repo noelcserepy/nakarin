@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import dosenbachThumb from "../../public/projects/dosenbach/dosenbach-nakarin-saisorn-2.jpg";
 import takeoffThumb from "../../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakarin-saisorn-8.jpg";
 import tremondiThumb from "../../public/projects/tremondi_quinten/tremondi-quinten-nakarin-saisorn-1.jpg";
@@ -7,132 +8,168 @@ import vfgThumb from "../../public/projects/VFG_burning_season/VFG-burning-seaso
 import schlierenThumb from "../../public/projects/stadt_schlieren/stadt-schlieren-nakarin-saisorn-8.jpg";
 import adliswilThumb from "../../public/projects/stadt_adliswil/stadt-adliswil-nakarin-saisorn-0.jpg";
 import pantheraThumb from "../../public/projects/panthera_onca/panthera-onca-nakarin-saisorn-0.jpg";
+import {
+  michel,
+  oppo,
+  vfgBurningSeason,
+  stadtSchlieren,
+  stadtAdliswil,
+  pantheraOnca,
+  takeoffBirrfeld,
+  tremondiQuinten,
+  dosenbach,
+} from "./images";
 
-const projectData = [
+export type Project = {
+  index: number;
+  name: string;
+  slug: string;
+  description: string;
+  location: string;
+  thumbnail: StaticImageData;
+  yearStart: string;
+  yearEnd: string;
+  client: string;
+  role: string;
+  link: string;
+  images: StaticImageData[];
+};
+
+const projectData: Project[] = [
   {
     index: 0,
     name: "OPPO",
     slug: "oppo",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Zürich",
-    thumbnailPath: "OPPO_Packshots_Treppe_01_NakarinFoto_Web.jpg",
     thumbnail: oppoThumb,
     yearStart: "2020",
     yearEnd: "laufend",
     client: "OPPO",
     role: "Fotograf",
     link: "",
+    images: oppo,
   },
   {
     index: 1,
     name: "Michel Freudenberg",
     slug: "michel-freudenberg",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Zürich",
-    thumbnailPath: "Michel_Freudenberg_Nakarin_Fotografie_12.jpg",
     thumbnail: michelThumb,
     yearStart: "2019",
     yearEnd: "2019",
     client: "Michel Freudenberg",
     role: "Fotograf",
     link: "",
+    images: michel,
   },
   {
     index: 2,
     name: "Dosenbach",
     slug: "dosenbach",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Genf",
-    thumbnailPath: "90_Dosenbach_Store_Genf__Nakarin_Foto__09_Web.jpg",
     thumbnail: dosenbachThumb,
     yearStart: "2021",
     yearEnd: "2021",
     client: "Dosenbach",
     role: "Fotograf",
     link: "",
+    images: dosenbach,
   },
   {
     index: 3,
     name: "Stadt Adliswil",
     slug: "stadt-adliswil",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Adliswil",
-    thumbnailPath: "91_Kindergarten_Werd_Aussen__Nakarin_Foto__149_web.jpg",
     thumbnail: adliswilThumb,
     yearStart: "2020",
     yearEnd: "laufend",
     client: "Dosenbach",
     role: "Fotograf",
     link: "",
+    images: stadtAdliswil,
   },
   {
     index: 4,
+    name: "Stadt Schlieren",
     slug: "stadt-schlieren",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Schlieren",
-    thumbnailPath: "Schlieren_Wakkerpreis_Drohne__Studio-Gataric__014_Web.jpg",
     thumbnail: schlierenThumb,
     yearStart: "2021",
     yearEnd: "2021",
     client: "Stadt Schlieren",
     role: "Fotograf",
     link: "",
+    images: stadtSchlieren,
   },
   {
     index: 5,
     name: "VFG Burning Season",
     slug: "vfg-burning-season",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Chiang Mai, Thailand",
-    thumbnailPath: "VFG_Burning_Web_Nakarin_Fotografie_04.jpg",
     thumbnail: vfgThumb,
     yearStart: "2019",
     yearEnd: "2019",
     client: "VFG Burning Season",
     role: "Fotograf",
     link: "",
+    images: vfgBurningSeason,
   },
   {
     index: 6,
     name: "Panthera Onca",
     slug: "panthera-onca",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Mollis Glarus",
-    thumbnailPath: "Panthera_Onca_Web_Nakarin_Fotografie_01.jpg",
     thumbnail: pantheraThumb,
     yearStart: "2018",
     yearEnd: "2018",
     client: "Panthera Onca",
     role: "Fotograf",
     link: "",
+    images: pantheraOnca,
   },
   {
     index: 7,
     name: "Take-Off Birrfeld",
     slug: "take-off-birrfeld",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Birrfeld",
-    thumbnailPath: "Birrfeld_Web_Nakarin_Fotografie_03.jpg",
     thumbnail: takeoffThumb,
     yearStart: "2018",
     yearEnd: "2018",
     client: "Take-Off Birrfeld",
     role: "Fotograf",
     link: "",
+    images: takeoffBirrfeld,
   },
   {
     index: 8,
     name: "Tremondi Quinten",
     slug: "tremondi-quinten",
-    description: "n/a",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint sed adipisci veritatis, dolor necessitatibus vel molestiae animi consequuntur soluta? Ipsa, enim. Animi temporibus quos modi sed sint deleniti vel exercitationem.",
     location: "Quinten",
-    thumbnailPath: "Quinten_Whg2OG__Nakarin-Fotografie__130_Web.jpg",
     thumbnail: tremondiThumb,
     yearStart: "2020",
     yearEnd: "2020",
     client: "Tremondi Quinten",
     role: "Fotograf",
     link: "",
+    images: tremondiQuinten,
   },
 ];
 
