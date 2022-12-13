@@ -17,7 +17,7 @@ function Nav({
   const router = useRouter();
 
   const handleBack = () => {
-    router.push("/", undefined, { scroll: true });
+    router.back();
   };
   return (
     <div className={`fixed top-8 px-8 flex justify-between w-full z-50 `}>

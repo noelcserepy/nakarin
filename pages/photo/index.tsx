@@ -1,15 +1,17 @@
-import Button from "../../components/Common/button";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 import Image from "next/image";
-import arrowDown from "../../public/graphics/arrow_down.svg";
-import arrowUp from "../../public/graphics/arrow_up.svg";
 import projectData from "../../components/Work/projectData";
-import useIndexScroller from "../../hooks/useIndexScroller";
+import Nav from "../../components/Nav/nav";
+import MainImage from "../../components/Work/mainImage";
 import PrevAndNextImages from "../../components/Work/prevAndNextImages";
 import BgCarousel from "../../components/Work/bgCarousel";
-import MainImage from "../../components/Work/mainImage";
-import { motion, useAnimationControls } from "framer-motion";
-import { useEffect, useState } from "react";
-import Nav from "../../components/Nav/nav";
+import useIndexScroller from "../../hooks/useIndexScroller";
+import Button from "../../components/Common/button";
+import arrowDown from "../../public/graphics/arrow_down.svg";
+import arrowUp from "../../public/graphics/arrow_up.svg";
+import { useRouter } from "next/router";
+import PhotoIndexContext from "../../components/Common/photoIndexContext";
 
 const projectVariants = {
   hidden: {
@@ -54,25 +56,34 @@ const textVariants = {
 };
 
 function Photo() {
-  const { currentIndex, totalScroll } = useIndexScroller(
-    0,
-    projectData.length - 1
+  const router = useRouter();
+  const { photoIndex, setPhotoIndex } = useContext(PhotoIndexContext);
+
+  const { totalScroll } = useIndexScroller(
+    projectData.length - 1,
+    photoIndex,
+    setPhotoIndex
   );
-  const [currentProject, setCurrentProject] = useState(
-    projectData[currentIndex]
-  );
+  const [currentProject, setCurrentProject] = useState(projectData[photoIndex]);
 
   const controls = useAnimationControls();
 
+  // Change project on scroll
   useEffect(() => {
     const nextSequence = async () => {
       await controls.start("next");
-      setCurrentProject(projectData[currentIndex]);
+      setCurrentProject(projectData[photoIndex]);
       await controls.start("visible");
     };
 
     nextSequence();
-  }, [currentIndex]);
+  }, [photoIndex]);
+
+  // Prefetch project detail pages
+  useEffect(() => {
+    router.prefetch(`/photo/${currentProject.slug}`);
+    console.log("ran prefetch");
+  }, [currentProject]);
 
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
@@ -98,15 +109,20 @@ function Photo() {
               </p>
               <h2 className="text-title">{currentProject.name}</h2>
             </div>
-            <Button shade="lightFull" size="small" text="Explore" />
+            <Button
+              shade="lightFull"
+              size="small"
+              text="Explore"
+              onClick={() => router.push(`/photo/${currentProject.slug}`)}
+            />
           </div>
         </motion.div>
 
         <div className="h-full w-6/12 flex items-center justify-end pl-8 relative">
-          <MainImage project={currentProject} currentIndex={currentIndex} />
+          <MainImage project={currentProject} currentIndex={photoIndex} />
           <PrevAndNextImages
             projectData={projectData}
-            currentIndex={currentIndex}
+            currentIndex={photoIndex}
           />
         </div>
         <div className="right-8 w-min flex flex-col justify-center items-center space-y-4">

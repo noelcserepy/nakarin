@@ -3,11 +3,14 @@ import { read } from "fs";
 import { useEffect, useRef, useState } from "react";
 import useTimeout from "./useTimeout";
 
-function useIndexScroller(startIndex: number, maxIndex: number) {
-  const [currentIndex, setCurrentIndex] = useState(startIndex);
+function useIndexScroller(
+  maxIndex: number,
+  currentIndex: number,
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+) {
   const ready = useRef(true);
 
-  const indexRef = useRef(startIndex);
+  const indexRef = useRef(currentIndex);
   const totalScroll = useMotionValue(0);
 
   useEffect(() => {
@@ -54,7 +57,7 @@ function useIndexScroller(startIndex: number, maxIndex: number) {
     };
   }, []);
 
-  return { currentIndex, totalScroll };
+  return { totalScroll };
 }
 
 export default useIndexScroller;
