@@ -7,6 +7,7 @@ import elmerLogo from "public/logos/elmer_citro_logo.svg";
 import oppoLogo from "public/logos/oppo_logo.svg";
 import weltklasseLogo from "public/logos/weltklasse_zh_logo.svg";
 import Parallax from "../Common/parallax";
+import { Router, useRouter } from "next/router";
 
 const containerVariants = {
   initial: {
@@ -83,6 +84,7 @@ export default function Intro({
 }: {
   darkenProgress: MotionValue;
 }) {
+  const router = useRouter();
   const overlayOpacity = useTransform(darkenProgress, [0, 1], [0, 1]);
 
   const headerText = `I help brands and individuals find their unique look, using both video and photography.`;
@@ -143,8 +145,19 @@ export default function Intro({
             </div>
           </motion.div>
 
-          <motion.div variants={buttonVariants}>
-            <Button text="Get in touch" shade="darkBorder" size="big" />
+          <motion.div className="flex gap-4" variants={buttonVariants}>
+            <Button
+              text="Get in touch"
+              shade="darkFull"
+              size="big"
+              onClick={() => router.push("/about")}
+            />
+            <Button
+              text="About me"
+              shade="darkBorder"
+              size="big"
+              onClick={() => router.push("/about")}
+            />
           </motion.div>
         </div>
 
@@ -165,11 +178,6 @@ export default function Intro({
           </Parallax>
         </div>
       </motion.div>
-
-      {/* <div className="mx-auto flex flex-col justify-end items-center">
-        <p>Scroll to see my work</p>
-        <Image alt="arrow down" src={arrowDown} className="h-12" />
-      </div> */}
     </div>
   );
 }

@@ -56,15 +56,18 @@ const textVariants = {
 };
 
 function Photo() {
-  const router = useRouter();
   const { photoIndex, setPhotoIndex } = useContext(PhotoIndexContext);
+  const [currentIndex, setCurrentIndex] = useState(photoIndex);
+  const router = useRouter();
 
   const { totalScroll } = useIndexScroller(
     projectData.length - 1,
-    photoIndex,
-    setPhotoIndex
+    currentIndex,
+    setCurrentIndex
   );
-  const [currentProject, setCurrentProject] = useState(projectData[photoIndex]);
+  const [currentProject, setCurrentProject] = useState(
+    projectData[currentIndex]
+  );
 
   const controls = useAnimationControls();
 
@@ -72,18 +75,22 @@ function Photo() {
   useEffect(() => {
     const nextSequence = async () => {
       await controls.start("next");
-      setCurrentProject(projectData[photoIndex]);
+      setCurrentProject(projectData[currentIndex]);
       await controls.start("visible");
     };
 
     nextSequence();
-  }, [photoIndex]);
+  }, [currentIndex]);
 
   // Prefetch project detail pages
   useEffect(() => {
     router.prefetch(`/photo/${currentProject.slug}`);
-    console.log("ran prefetch");
   }, [currentProject]);
+
+  const handleClick = () => {
+    setPhotoIndex(currentIndex);
+    router.push(`/photo/${currentProject.slug}`);
+  };
 
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
@@ -103,7 +110,7 @@ function Photo() {
         >
           <div className="w-full flex flex-col justify-between items-start space-y-8">
             <div className="flex flex-col items-start">
-              <p>
+              <p className="text-subtitle">
                 <span>{currentProject.yearStart}</span>{" "}
                 <span>{currentProject.location}</span>
               </p>
@@ -119,10 +126,14 @@ function Photo() {
         </motion.div>
 
         <div className="h-full w-6/12 flex items-center justify-end pl-8 relative">
-          <MainImage project={currentProject} currentIndex={photoIndex} />
+          <MainImage
+            project={currentProject}
+            currentIndex={currentIndex}
+            handleClick={() => router.push(`/photo/${currentProject.slug}`)}
+          />
           <PrevAndNextImages
             projectData={projectData}
-            currentIndex={photoIndex}
+            currentIndex={currentIndex}
           />
         </div>
         <div className="right-8 w-min flex flex-col justify-center items-center space-y-4">

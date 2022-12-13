@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { MouseEventHandler, useEffect } from "react";
 
 const imageVariants = {
   hidden: {
@@ -52,15 +52,19 @@ const shutterVariants = {
 function MainImage({
   project,
   currentIndex,
+  handleClick,
 }: {
   project: any;
   currentIndex: number;
+  handleClick: MouseEventHandler<HTMLDivElement>;
 }) {
   useEffect(() => {}, [currentIndex]);
+
   return (
     <motion.div
-      className="aspect-3/2 w-full relative flex items-center overflow-clip"
+      className="aspect-3/2 w-full relative flex items-center overflow-clip cursor-pointer"
       variants={imageVariants}
+      onClick={handleClick}
     >
       <Image
         src={project.thumbnail}

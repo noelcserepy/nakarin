@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { NextFontWithVariable } from "@next/font/dist/types";
 import { useContext, useState } from "react";
 import PhotoIndexContext from "../components/Common/photoIndexContext";
+import { useRouter } from "next/router";
+import SEO from "../components/Common/SEO";
 
 const switzer: NextFontWithVariable = localFont({
   src: "./Switzer-Variable.woff2",
@@ -45,8 +47,12 @@ const technor: NextFontWithVariable = localFont({
 export default function App({ Component, pageProps }: AppProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
 
+  const router = useRouter();
+  const url = `https://www.nakarin.ch${router.route}`;
+
   return (
     <PhotoIndexContext.Provider value={{ photoIndex, setPhotoIndex }}>
+      <SEO url={url} />
       <motion.main
         className={`
       ${switzer.variable} 

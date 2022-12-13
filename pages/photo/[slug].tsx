@@ -80,7 +80,7 @@ function Project({ project }: { project: Project }) {
               <div className="h-full w-full relative">
                 <Image
                   key={project?.name}
-                  src={project?.images[7]}
+                  src={project?.images[0]}
                   alt={project?.name + "0"}
                   fill
                   priority

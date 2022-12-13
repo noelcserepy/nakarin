@@ -1,7 +1,5 @@
 import { useMotionValue } from "framer-motion";
-import { read } from "fs";
-import { useEffect, useRef, useState } from "react";
-import useTimeout from "./useTimeout";
+import { useEffect, useRef } from "react";
 
 function useIndexScroller(
   maxIndex: number,
@@ -36,20 +34,17 @@ function useIndexScroller(
         }
       }
       setCurrentIndex(indexRef.current);
+      console.log(indexRef.current);
     }
 
     let timer: NodeJS.Timeout;
 
-    window.addEventListener(
-      "wheel",
-      (e) => {
-        handleScroll(e);
-        timer = setTimeout(() => {
-          ready.current = true;
-        }, 500);
-      },
-      { passive: true }
-    );
+    window.addEventListener("wheel", (e) => {
+      handleScroll(e);
+      timer = setTimeout(() => {
+        ready.current = true;
+      }, 500);
+    });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
