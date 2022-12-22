@@ -16,13 +16,6 @@ const lineVariants = {
   initial: {
     height: 0,
   },
-  inView: {
-    height: "100%",
-    transition: {
-      duration: 1,
-      ease: "easeInOut",
-    },
-  },
 };
 
 const textVariantsLeft = {
@@ -97,8 +90,7 @@ function Projects() {
     <motion.div className="flex justify-center items-center">
       <motion.div
         className="w-screen h-[90vh] relative"
-        initial="initial"
-        whileInView="inView"
+        initial="inView"
         viewport={{ amount: 0.5 }}
       >
         <ProjectSelectContainer

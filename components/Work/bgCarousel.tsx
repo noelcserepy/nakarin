@@ -30,13 +30,14 @@ function BgCarousel({ totalScroll }: { totalScroll: MotionValue }) {
   return (
     <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2">
       <motion.div
-        className=" h-[120vh] aspect-square [&>*]:opacity-20"
+        className=" h-[120vh] aspect-square [&>*]:opacity-20 relative"
         animate={controls}
       >
         <Image
           src={carousel}
           alt="Carousel graphic"
           fill
+          priority
           style={{ objectFit: "contain", objectPosition: "center center" }}
         />
       </motion.div>

@@ -1,9 +1,11 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import insta from "../../public/logos/instagram_logo.svg";
+import instaDark from "../../public/logos/instagram_logo_dark.svg";
 import linkedin from "../../public/logos/linkedin_logo.svg";
+import linkedinDark from "../../public/logos/linkedin_logo_dark.svg";
 
-function Socials() {
+function Socials({ dark = false }: { dark?: boolean }) {
   const router = useRouter();
 
   return (
@@ -16,9 +18,10 @@ function Socials() {
       >
         <Image
           alt="LinkedIn Logo Icon"
-          src={linkedin}
+          src={dark ? linkedinDark : linkedin}
           fill
           style={{ objectFit: "contain" }}
+          sizes="10vw"
         />
       </div>
       <div
@@ -27,9 +30,10 @@ function Socials() {
       >
         <Image
           alt="Instagram Logo Icon"
-          src={insta}
+          src={dark ? instaDark : insta}
           fill
           style={{ objectFit: "contain" }}
+          sizes="10vw"
         />
       </div>
     </div>

@@ -7,19 +7,9 @@ const hoverTransition = {
     repeat: Infinity,
     ease: "linear",
   },
-  x: {
-    duration: 2,
-    delay: 0,
-    ease: "easeOut",
-  },
 };
 
-const inViewTransition = {
-  x: {
-    duration: 1,
-    delay: 0,
-    ease: "easeOut",
-  },
+const animateTransition = {
   rotate: {
     duration: 0.5,
     ease: "easeOut",
@@ -28,12 +18,12 @@ const inViewTransition = {
 
 const leftVariants = {
   initial: {
-    x: "50%",
+    x: 0,
   },
-  inView: (i: MotionValue) => ({
-    x: "0%",
+  animate: (i: MotionValue) => ({
+    x: 0,
     rotate: i.get() - 1,
-    transition: inViewTransition,
+    transition: animateTransition,
   }),
 
   hover: (i: MotionValue) => ({
@@ -44,12 +34,12 @@ const leftVariants = {
 
 const rightVariants = {
   initial: {
-    x: "-50%",
+    x: 0,
   },
-  inView: (i: MotionValue) => ({
-    x: "0%",
+  animate: (i: MotionValue) => ({
+    x: 0,
     rotate: i.get() + 1,
-    transition: inViewTransition,
+    transition: animateTransition,
   }),
   hover: (i: MotionValue) => ({
     rotate: i.get() + 360,

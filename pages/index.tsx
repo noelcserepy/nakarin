@@ -54,6 +54,7 @@ export default function Home() {
                 objectFit: "cover",
                 objectPosition: "center center",
               }}
+              sizes="100vw"
             />
           </Parallax>
 

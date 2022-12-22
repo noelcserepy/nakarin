@@ -1,5 +1,41 @@
-import Button from "../Common/button";
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { motion } from "framer-motion";
+import Button from "../Common/button";
+
+const burgerVariants = {
+  hidden: {
+    x: 150,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
+  visible: {
+    x: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.2,
+      ease: "easeOut",
+    },
+  },
+};
+const backVariants = {
+  hidden: {
+    x: -150,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
+  visible: {
+    x: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.2,
+      ease: "easeOut",
+    },
+  },
+};
 
 function NavClosed({
   back = true,
@@ -15,13 +51,16 @@ function NavClosed({
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <div
-      className={`fixed top-8 px-8 flex justify-between w-full z-50 `}
-      key="closed"
+    <motion.div
+      className={`fixed top-8 px-8 flex justify-between w-full z-40 `}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
     >
       {back ? (
-        <button
+        <motion.button
           className="flex items-center space-x-4 cursor-pointer"
+          variants={backVariants}
           onClick={handleBack}
         >
           <svg
@@ -40,7 +79,7 @@ function NavClosed({
           <p className={`text-paragraph ${dark ? "text-dark" : "text-light"}`}>
             Back
           </p>
-        </button>
+        </motion.button>
       ) : (
         <div className="w-16" />
       )}
@@ -51,10 +90,11 @@ function NavClosed({
           <Button shade="lightBorder" size="small" text="Contact" />
         </div>
       ) : (
-        <button
+        <motion.button
           className={`${
             dark ? "bg-dark" : "bg-light"
           } flex items-center justify-center p-2 rounded aspect-square cursor-pointer`}
+          variants={burgerVariants}
           onClick={() => setOpen(true)}
         >
           <svg
@@ -69,9 +109,9 @@ function NavClosed({
               fill={`${dark ? "#ECEEEF" : "#090B0C"}`}
             />
           </svg>
-        </button>
+        </motion.button>
       )}
-    </div>
+    </motion.div>
   );
 }
 

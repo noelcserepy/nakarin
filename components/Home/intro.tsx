@@ -163,12 +163,13 @@ export default function Intro({
 
         <div className="flex justify-end items-start w-5/12 h-full relative">
           <Parallax twClass="h-full w-full flex justify-center items-center">
-            <div className="h-full w-full">
+            <div className="h-full w-full relative">
               <Image
                 alt="Hand opening car door."
                 src={panthera}
                 fill
                 style={{ objectPosition: "start start", objectFit: "cover" }}
+                sizes="(max-width: 640px) 50vw, (max-width: 1200px) 33vw, 33vw"
               />
               <motion.div
                 className="w-full h-full absolute top-0 left-0 right-0 bottom-0 bg-dark"

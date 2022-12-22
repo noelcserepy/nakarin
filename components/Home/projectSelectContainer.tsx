@@ -4,7 +4,6 @@ import {
   useMotionTemplate,
   useTransform,
 } from "framer-motion";
-import { useState } from "react";
 
 const containerVariants = {
   initial: {
@@ -37,8 +36,6 @@ function ProjectSelectContainer({
   centerLine: MotionValue;
   handleClick: any;
 }) {
-  const [enterComplete, setEnterComplete] = useState(false);
-
   const clipPath = left
     ? useMotionTemplate`polygon(0 0, ${centerLine}% 0, ${centerLine}% 100%, 0% 100%)`
     : useMotionTemplate`polygon(${centerLine}% 0, 100% 0, 100% 100%, ${centerLine}% 100%)`;
@@ -55,24 +52,20 @@ function ProjectSelectContainer({
   });
 
   const handleMouseEnter = () => {
-    if (enterComplete) {
-      if (left && setHoverLeft) {
-        setHoverLeft(true);
-      }
-      if (!left && setHoverRight) {
-        setHoverRight(true);
-      }
+    if (left && setHoverLeft) {
+      setHoverLeft(true);
+    }
+    if (!left && setHoverRight) {
+      setHoverRight(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (enterComplete) {
-      if (left && setHoverLeft) {
-        setHoverLeft(false);
-      }
-      if (!left && setHoverRight) {
-        setHoverRight(false);
-      }
+    if (left && setHoverLeft) {
+      setHoverLeft(false);
+    }
+    if (!left && setHoverRight) {
+      setHoverRight(false);
     }
   };
 
@@ -80,14 +73,12 @@ function ProjectSelectContainer({
     <motion.div
       className="h-full w-full absolute cursor-pointer top-0 left-0 flex justify-center items-center"
       variants={containerVariants}
-      initial="initial"
       custom={left}
-      whileHover={enterComplete ? "hover" : "inView"}
+      initial="initial"
+      animate="animate"
+      whileHover="hover"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      whileInView="inView"
-      onAnimationComplete={() => setEnterComplete(true)}
-      onViewportLeave={() => setEnterComplete(false)}
       style={{ clipPath, zIndex }}
       onClick={handleClick}
     >

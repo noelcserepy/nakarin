@@ -1,19 +1,37 @@
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import MenuItems from "./menuItems";
+import Socials from "../Common/socials";
 
 const modalVariants = {
-  open: {
-    x: 0,
-    transition: {
-      ease: "easeOut",
-      duration: 0.5,
-    },
-  },
-  closed: {
+  hidden: {
     x: "100%",
     transition: {
       ease: "easeIn",
+    },
+  },
+  visible: {
+    x: 0,
+    transition: {
+      delay: 0.3,
+      ease: "easeOut",
+      duration: 0.4,
+    },
+  },
+};
+const bgVariants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      ease: "easeIn",
+    },
+  },
+  visible: {
+    opacity: 0.5,
+    transition: {
+      delay: 0.3,
+      ease: "easeOut",
+      duration: 0.4,
     },
   },
 };
@@ -32,32 +50,55 @@ function NavOpen({
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <motion.div
-      className="h-full min-w-[400px] bg-light flex flex-col justify-start fixed right-0 top-0 z-50"
-      initial="closed"
-      animate="open"
-      exit="closed"
-      variants={modalVariants}
-    >
-      <div
-        className="top-8 right-8 absolute cursor-pointer"
+    <>
+      <motion.div
+        className="w-screen h-screen fixed top-0 left-0 bottom-0 right-0 z-40 overflow-hidden bg-dark"
+        variants={bgVariants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        key="bg"
         onClick={() => setOpen(false)}
+      />
+
+      <motion.div
+        className="h-full min-w-[400px] bg-light flex flex-col justify-evenly fixed right-0 top-0 z-50 rounded-l  px-16 py-16 overflow-hidden"
+        variants={modalVariants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
       >
-        <svg
-          width="21"
-          height="15"
-          viewBox="0 0 21 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          className="top-10 right-10 absolute cursor-pointer"
+          onClick={() => setOpen(false)}
         >
-          <path
-            d="M0.600098 1.79985C0.600098 1.1361 1.15311 0.599854 1.8376 0.599854H16.6876C17.3721 0.599854 17.9251 1.1361 17.9251 1.79985C17.9251 2.4636 17.3721 2.99985 16.6876 2.99985H1.8376C1.15311 2.99985 0.600098 2.4636 0.600098 1.79985ZM3.0751 7.79985C3.0751 7.1361 3.62811 6.59985 4.3126 6.59985H19.1626C19.8471 6.59985 20.4001 7.1361 20.4001 7.79985C20.4001 8.4636 19.8471 8.99985 19.1626 8.99985H4.3126C3.62811 8.99985 3.0751 8.4636 3.0751 7.79985ZM17.9251 13.7999C17.9251 14.4636 17.3721 14.9999 16.6876 14.9999H1.8376C1.15311 14.9999 0.600098 14.4636 0.600098 13.7999C0.600098 13.1361 1.15311 12.5999 1.8376 12.5999H16.6876C17.3721 12.5999 17.9251 13.1361 17.9251 13.7999Z"
-            fill={`${dark ? "#ECEEEF" : "#090B0C"}`}
-          />
-        </svg>
-      </div>
-      <MenuItems />
-    </motion.div>
+          <svg
+            height="20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="-0.07500076293945312 95.92500305175781 320.1499938964844 320.14996337890625"
+            fill="none"
+          >
+            <path
+              fill={`${dark ? "#ECEEEF" : "#090B0C"}`}
+              d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"
+            ></path>
+          </svg>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="text-paragraph text-dark">Navigation</div>
+          <div className="border-t-[1px] border-dark mb-8" />
+          <MenuItems />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="text-paragraph text-dark">Socials</div>
+          <div className="border-t-[1px] border-dark" />
+          <Socials dark />
+        </div>
+      </motion.div>
+    </>
   );
 }
 
