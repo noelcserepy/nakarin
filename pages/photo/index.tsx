@@ -25,25 +25,17 @@ const projectVariants = {
 const textVariants = {
   hidden: {
     opacity: 0,
-    y: -10,
-  },
-  next: {
-    opacity: 0,
     y: 10,
+  },
+  enter: {
+    opacity: 1,
+    y: 0,
     transition: {
-      duration: 0.3,
-      ease: "easeIn",
+      delay: 1,
+      duration: 0.14,
+      ease: "easeOut",
     },
   },
-  prev: {
-    opacity: 0,
-    y: -10,
-    transition: {
-      duration: 0.3,
-      ease: "easeIn",
-    },
-  },
-
   visible: {
     opacity: 1,
     y: 0,
@@ -51,6 +43,14 @@ const textVariants = {
       delay: 0.3,
       duration: 0.14,
       ease: "easeOut",
+    },
+  },
+  next: {
+    opacity: 0,
+    y: 10,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
     },
   },
 };
@@ -81,6 +81,11 @@ function Photo() {
 
     nextSequence();
   }, [currentIndex]);
+
+  // Animate in on load
+  useEffect(() => {
+    controls.start("enter");
+  }, []);
 
   // Prefetch project detail pages
   useEffect(() => {

@@ -2,21 +2,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MouseEventHandler, useEffect } from "react";
 
-const imageVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {},
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.3,
-      duration: 0,
-      ease: "easeInOut",
-    },
-  },
-};
-
 const shutterVariants = {
   hidden: {
     background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
@@ -25,16 +10,10 @@ const shutterVariants = {
       ease: "linear",
     },
   },
-  next: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
+  enter: {
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) 199%, #090B0C 200%)",
     transition: {
-      duration: 0.14,
-      ease: "linear",
-    },
-  },
-  prev: {
-    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
-    transition: {
+      delay: 1,
       duration: 0.14,
       ease: "linear",
     },
@@ -43,6 +22,13 @@ const shutterVariants = {
     background: "linear-gradient(0deg, rgba(0, 0, 0, 0) 199%, #090B0C 200%)",
     transition: {
       delay: 0.3,
+      duration: 0.14,
+      ease: "linear",
+    },
+  },
+  next: {
+    background: "linear-gradient(0deg, rgba(0, 0, 0, 0) -199%, #090B0C 0%)",
+    transition: {
       duration: 0.14,
       ease: "linear",
     },
@@ -63,7 +49,6 @@ function MainImage({
   return (
     <motion.div
       className="aspect-3/2 w-full relative flex items-center overflow-clip cursor-pointer"
-      variants={imageVariants}
       onClick={handleClick}
     >
       <Image
