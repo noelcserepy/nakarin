@@ -3,10 +3,11 @@ import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import { motion } from "framer-motion";
 import { NextFontWithVariable } from "@next/font/dist/types";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import PhotoIndexContext from "../components/Common/photoIndexContext";
 import { useRouter } from "next/router";
 import SEO from "../components/Common/SEO";
+import VideoIndexContext from "../components/Common/videoIndexContext";
 
 const switzer: NextFontWithVariable = localFont({
   src: "./Switzer-Variable.woff2",
@@ -46,24 +47,27 @@ const technor: NextFontWithVariable = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
 
   const router = useRouter();
   const url = `https://www.nakarin.ch${router.route}`;
 
   return (
     <PhotoIndexContext.Provider value={{ photoIndex, setPhotoIndex }}>
-      <SEO url={url} />
-      <motion.main
-        className={`
-      ${switzer.variable} 
-      ${switzerItalic.variable} 
-      ${bespokeSlab.variable} 
-      ${bespokeSlabItalic.variable} 
-      ${technor.variable}  
-      h-full w-screen font-sans bg-light text-dark`}
-      >
-        <Component {...pageProps} />
-      </motion.main>
+      <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
+        <SEO url={url} />
+        <motion.main
+          className={`
+          ${switzer.variable} 
+          ${switzerItalic.variable} 
+          ${bespokeSlab.variable} 
+          ${bespokeSlabItalic.variable} 
+          ${technor.variable}  
+          h-full w-screen font-sans bg-light text-dark`}
+        >
+          <Component {...pageProps} />
+        </motion.main>
+      </VideoIndexContext.Provider>
     </PhotoIndexContext.Provider>
   );
 }

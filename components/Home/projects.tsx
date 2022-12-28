@@ -77,13 +77,16 @@ function Projects() {
     }
   }, [hoverLeft, hoverRight]);
 
-  function clickHandler(): void {
+  function photoClickHandler(): void {
     router.push("/photo", undefined, { scroll: true });
+  }
+  function videoClickHandler(): void {
+    router.push("/video", undefined, { scroll: true });
   }
 
   useEffect(() => {
-    router.prefetch("/work/photo");
-    router.prefetch("/work/video");
+    router.prefetch("/photo");
+    router.prefetch("/video");
   }, []);
 
   return (
@@ -98,7 +101,7 @@ function Projects() {
           setHoverLeft={setHoverLeft}
           setHoverRight={setHoverRight}
           centerLine={centerLine}
-          handleClick={clickHandler}
+          handleClick={videoClickHandler}
         >
           <motion.h3
             className="absolute z-20 text-title left-24"
@@ -124,7 +127,7 @@ function Projects() {
           setHoverLeft={setHoverLeft}
           setHoverRight={setHoverRight}
           centerLine={centerLine}
-          handleClick={clickHandler}
+          handleClick={photoClickHandler}
         >
           <motion.h3
             className="absolute z-20 text-title -translate-y-50% right-24"

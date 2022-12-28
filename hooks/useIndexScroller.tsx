@@ -1,5 +1,6 @@
 import { useMotionValue } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import _ from "lodash";
 
 function useIndexScroller(
   maxIndex: number,
@@ -11,12 +12,19 @@ function useIndexScroller(
   const indexRef = useRef(currentIndex);
   const totalScroll = useMotionValue(0);
 
+  const resetReady = () => {
+    ready.current = true;
+  };
+
+  const debouncedResetReady = useCallback(_.debounce(resetReady, 700), []);
+
   useEffect(() => {
     function handleScroll(e: WheelEvent) {
       if (!ready.current) {
         return;
       }
       ready.current = false;
+      debouncedResetReady();
       if (e.deltaY > 0) {
         totalScroll.set(totalScroll.get() + 1);
         if (indexRef.current === maxIndex) {
@@ -37,18 +45,10 @@ function useIndexScroller(
       console.log(indexRef.current);
     }
 
-    let timer: NodeJS.Timeout;
-
-    window.addEventListener("wheel", (e) => {
-      handleScroll(e);
-      timer = setTimeout(() => {
-        ready.current = true;
-      }, 500);
-    });
+    window.addEventListener("wheel", handleScroll);
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-      clearTimeout(timer);
     };
   }, []);
 
