@@ -4,7 +4,6 @@ import projectData from "../../components/Work/projectData";
 import Nav from "../../components/Nav/nav";
 import MainImage from "../../components/Work/mainImage";
 import PrevAndNextImages from "../../components/Work/prevAndNextImages";
-import BgCarousel from "../../components/Work/bgCarousel";
 import useIndexScroller from "../../hooks/useIndexScroller";
 import Button from "../../components/Common/button";
 import { useRouter } from "next/router";
@@ -12,6 +11,7 @@ import BgGraphic from "./bgGraphic";
 import ScrollText from "./scrollText";
 import reel from "../../public/graphics/movie_reel.svg";
 import carousel from "../../public/graphics/carousel.svg";
+import Curtain from "../Common/curtain";
 
 const projectVariants = {
   hidden: {
@@ -31,8 +31,8 @@ const textVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 1,
-      duration: 0.14,
+      delay: 1.5,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
@@ -103,7 +103,7 @@ function ProjectSelect({
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
       <Nav />
-
+      <Curtain />
       <BgGraphic
         totalScroll={totalScroll}
         graphic={segment === "photo" ? carousel : reel}

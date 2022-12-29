@@ -1,7 +1,6 @@
 import { motion, MotionValue, useAnimationControls } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
-import reel from "../../public/graphics/movie_reel.svg";
 
 const bgVariants = {
   hidden: {
@@ -12,7 +11,8 @@ const bgVariants = {
     x: "0%",
     opacity: 0.2,
     transition: {
-      opacity: { duration: 0.5, delay: 0.5 },
+      opacity: { duration: 1, delay: 0.8 },
+      delay: 0.8,
       duration: 0.5,
     },
   },

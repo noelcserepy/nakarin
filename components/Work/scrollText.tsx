@@ -4,6 +4,19 @@ import arrowUp from "../../public/graphics/arrow_up.svg";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useRef } from "react";
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {
+      delay: 3,
+      duration: 0.5,
+    },
+  },
+};
+
 const scrollTextVariants = {
   hidden: {
     opacity: 0,
@@ -13,7 +26,7 @@ const scrollTextVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 1.2,
+      delay: 3,
       duration: 0.2,
       ease: "easeOut",
     },
@@ -58,13 +71,16 @@ function ScrollText({ currentIndex }: { currentIndex: number }) {
   }, [currentIndex]);
 
   return (
-    <div className="right-8 w-min flex flex-col justify-center items-center space-y-4">
+    <motion.div
+      className="right-8 w-min flex flex-col justify-center items-center space-y-4"
+      variants={containerVariants}
+    >
       <Image src={arrowUp} alt="arrowUp" />
       <motion.p animate={controls} variants={scrollTextVariants}>
         Scroll
       </motion.p>
       <Image src={arrowDown} alt="arrowDown" />
-    </div>
+    </motion.div>
   );
 }
 

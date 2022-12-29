@@ -1,14 +1,6 @@
-import {
-  MotionValue,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTime,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
-import { easeOut } from "popmotion";
 
 function UpcomingImage({
   currentIndex,
@@ -21,7 +13,6 @@ function UpcomingImage({
   projectIndex: number;
   maxIndex: number;
 }) {
-  const time = useTime();
   const y = useMotionValue(0);
   const ySmooth = useSpring(y, { damping: 20, stiffness: 120 });
   const x = useMotionValue(0);

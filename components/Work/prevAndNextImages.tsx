@@ -1,6 +1,4 @@
-import { motion, useMotionValue } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import UpcomingImage from "./upcomingImage";
 
 const prevVariants = {
@@ -10,7 +8,7 @@ const prevVariants = {
   enter: {
     opacity: 1,
     transition: {
-      delay: 0,
+      delay: 2,
       duration: 0.5,
       ease: "easeOut",
     },
@@ -27,7 +25,12 @@ function PrevAndNextImages({
   const maxIndex = projectData.length - 1;
 
   return (
-    <motion.div className="h-[250vh] w-full absolute flex flex-col justify-center items-center -z-10 ">
+    <motion.div
+      className="h-[250vh] w-full absolute flex flex-col justify-center items-center -z-10"
+      variants={prevVariants}
+      initial="hidden"
+      animate="enter"
+    >
       {projectData.map((project: any, i: number) => (
         <UpcomingImage
           key={i}

@@ -3,6 +3,7 @@ import { Project } from "../../components/Work/projectData";
 import { ScrollerMotion } from "scroller-motion";
 import Nav from "../../components/Nav/nav";
 import projectData from "../../components/Work/projectData";
+import Curtain from "../../components/Common/curtain";
 
 export async function getStaticPaths() {
   const paths = projectData.map((project) => ({
@@ -65,6 +66,7 @@ function Project({ project }: { project: Project }) {
   return (
     <>
       <Nav back dark />
+      <Curtain />
       <ScrollerMotion
         scale={1}
         spring={{

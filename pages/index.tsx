@@ -9,6 +9,7 @@ import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
 import takeoff from "../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakarin-saisorn-1.jpg";
 import Footer from "../components/Common/footer";
+import Curtain from "../components/Common/curtain";
 
 export default function Home() {
   const introRef = useRef(null);
@@ -37,6 +38,7 @@ export default function Home() {
           restDelta: 0.5,
         }}
       >
+        <Curtain />
         <header className="w-screen h-[110vh] relative text-light overflow-clip">
           {/* Background Image */}
           <Parallax
@@ -63,10 +65,10 @@ export default function Home() {
             className="w-screen h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-end"
             style={{ zIndex: "10" }}
           >
-            <div className="font-switzer text-4xl whitespace-pre text-right px-24">
-              {`Freelance Photographer & Videographer`}
-            </div>
             <ScrollText />
+            <div className="text-subtitle text-center whitespace-pre-line px-8">
+              {`Freelance Photographer & \nVideographer`}
+            </div>
           </div>
         </header>
 

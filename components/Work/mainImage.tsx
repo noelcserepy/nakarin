@@ -13,7 +13,7 @@ const shutterVariants = {
   enter: {
     background: "linear-gradient(0deg, rgba(0, 0, 0, 0) 199%, #090B0C 200%)",
     transition: {
-      delay: 1,
+      delay: 2,
       duration: 0.14,
       ease: "linear",
     },

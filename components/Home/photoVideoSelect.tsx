@@ -19,6 +19,7 @@ const containerVariants = {
   exit: {
     x: "-100%",
     transition: {
+      delay: 0.3,
       duration: 0.6,
       ease: "easeIn",
     },
@@ -38,6 +39,13 @@ const textVariantsLeft = {
       ease: "easeOut",
     },
   },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn",
+    },
+  },
 };
 
 const textVariantsRight = {
@@ -51,6 +59,13 @@ const textVariantsRight = {
     transition: {
       duration: 0.6,
       ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn",
     },
   },
 };
@@ -116,6 +131,7 @@ function PhotoVideoSelect() {
           <motion.h3
             className="absolute z-20 text-title left-24"
             variants={textVariantsLeft}
+            exit="exit"
           >
             Video
           </motion.h3>
@@ -141,6 +157,7 @@ function PhotoVideoSelect() {
           <motion.h3
             className="absolute z-20 text-title -translate-y-50% right-24"
             variants={textVariantsRight}
+            exit="exit"
           >
             Photo
           </motion.h3>

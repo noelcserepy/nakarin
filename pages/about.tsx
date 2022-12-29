@@ -4,6 +4,7 @@ import Socials from "../components/Common/socials";
 import Nav from "../components/Nav/nav";
 import aboutImg from "../public/misc/about_img.png";
 import { motion } from "framer-motion";
+import Curtain from "../components/Common/curtain";
 
 const textVariants = {
   hidden: {
@@ -40,6 +41,7 @@ const imageVariants = {
 function About() {
   return (
     <div className="h-screen w-screen bg-dark p-8 flex items-center justify-center ">
+      <Curtain />
       <Nav />
       <div className=" h-1/2 w-full flex items-center justify-between max-w-[1440px]">
         <motion.div
