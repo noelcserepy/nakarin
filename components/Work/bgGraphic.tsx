@@ -1,21 +1,30 @@
 import { motion, MotionValue, useAnimationControls } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
-import carousel from "../../public/graphics/carousel.svg";
+import reel from "../../public/graphics/movie_reel.svg";
 
 const bgVariants = {
   hidden: {
     x: "-50%",
+    opacity: 1,
   },
   visible: {
     x: "0%",
+    opacity: 0.2,
     transition: {
+      opacity: { duration: 0.5, delay: 0.5 },
       duration: 0.5,
     },
   },
 };
 
-function BgCarousel({ totalScroll }: { totalScroll: MotionValue }) {
+function BgGraphic({
+  totalScroll,
+  graphic,
+}: {
+  totalScroll: MotionValue;
+  graphic: any;
+}) {
   const controls = useAnimationControls();
 
   useEffect(() => {
@@ -38,14 +47,14 @@ function BgCarousel({ totalScroll }: { totalScroll: MotionValue }) {
   return (
     <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2">
       <motion.div
-        className=" h-[120vh] aspect-square [&>*]:opacity-20 relative"
+        className=" h-[120vh] aspect-square  relative"
         variants={bgVariants}
         initial="hidden"
         animate={controls}
       >
         <Image
-          src={carousel}
-          alt="Carousel graphic"
+          src={graphic}
+          alt="Movie reel graphic"
           fill
           priority
           style={{ objectFit: "contain", objectPosition: "center center" }}
@@ -55,4 +64,4 @@ function BgCarousel({ totalScroll }: { totalScroll: MotionValue }) {
   );
 }
 
-export default BgCarousel;
+export default BgGraphic;

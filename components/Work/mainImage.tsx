@@ -56,6 +56,8 @@ function MainImage({
         alt={project.name}
         fill
         style={{ objectFit: "cover" }}
+        sizes="50vw"
+        priority
       />
       <motion.div
         className="absolute top-0 left-0 bottom-0 right-0 bg-vignette"

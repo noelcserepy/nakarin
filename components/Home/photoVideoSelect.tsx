@@ -12,9 +12,16 @@ import RotationContainer from "./rotationContainer";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const lineVariants = {
+const containerVariants = {
   initial: {
-    height: 0,
+    opacity: 1,
+  },
+  exit: {
+    x: "-100%",
+    transition: {
+      duration: 0.6,
+      ease: "easeIn",
+    },
   },
 };
 
@@ -53,7 +60,7 @@ const centerLineTransition = {
   bounce: 0.3,
 };
 
-function Projects() {
+function PhotoVideoSelect() {
   const [hoverLeft, setHoverLeft] = useState(false);
   const [hoverRight, setHoverRight] = useState(false);
 
@@ -78,10 +85,10 @@ function Projects() {
   }, [hoverLeft, hoverRight]);
 
   function photoClickHandler(): void {
-    router.push("/photo", undefined, { scroll: true });
+    router.push("/photo", undefined, { scroll: false });
   }
   function videoClickHandler(): void {
-    router.push("/video", undefined, { scroll: true });
+    router.push("/video", undefined, { scroll: false });
   }
 
   useEffect(() => {
@@ -90,12 +97,15 @@ function Projects() {
   }, []);
 
   return (
-    <motion.div className="flex justify-center items-center">
-      <motion.div
-        className="w-screen h-[90vh] relative"
-        initial="inView"
-        viewport={{ amount: 0.5 }}
-      >
+    <motion.div
+      className="flex justify-center items-center"
+      variants={containerVariants}
+      key="projects"
+      initial="initial"
+      animate="initial"
+      exit="exit"
+    >
+      <motion.div className="w-screen h-[90vh] relative">
         <ProjectSelectContainer
           left={true}
           setHoverLeft={setHoverLeft}
@@ -116,7 +126,6 @@ function Projects() {
 
         <motion.div
           className={`h-full w-0 border-l-2 border-beige absolute -translate-x-1/2 z-20`}
-          variants={lineVariants}
           style={{
             left: centerLinePercent,
           }}
@@ -144,4 +153,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default PhotoVideoSelect;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
-import Image from "next/image";
 import projectData from "../../components/Work/projectData";
 import Nav from "../../components/Nav/nav";
 import MainImage from "../../components/Work/mainImage";
@@ -8,10 +7,11 @@ import PrevAndNextImages from "../../components/Work/prevAndNextImages";
 import BgCarousel from "../../components/Work/bgCarousel";
 import useIndexScroller from "../../hooks/useIndexScroller";
 import Button from "../../components/Common/button";
-import arrowDown from "../../public/graphics/arrow_down.svg";
-import arrowUp from "../../public/graphics/arrow_up.svg";
 import { useRouter } from "next/router";
-import BgReel from "./bgReel";
+import BgGraphic from "./bgGraphic";
+import ScrollText from "./scrollText";
+import reel from "../../public/graphics/movie_reel.svg";
+import carousel from "../../public/graphics/carousel.svg";
 
 const projectVariants = {
   hidden: {
@@ -25,11 +25,11 @@ const projectVariants = {
 const textVariants = {
   hidden: {
     opacity: 0,
-    y: 10,
+    x: -10,
   },
   enter: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
       delay: 1,
       duration: 0.14,
@@ -38,7 +38,7 @@ const textVariants = {
   },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
       delay: 0.3,
       duration: 0.14,
@@ -47,7 +47,7 @@ const textVariants = {
   },
   next: {
     opacity: 0,
-    y: 10,
+    x: -10,
     transition: {
       duration: 0.3,
       ease: "easeIn",
@@ -104,11 +104,10 @@ function ProjectSelect({
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
       <Nav />
 
-      {segment === "photo" ? (
-        <BgCarousel totalScroll={totalScroll} />
-      ) : (
-        <BgReel totalScroll={totalScroll} />
-      )}
+      <BgGraphic
+        totalScroll={totalScroll}
+        graphic={segment === "photo" ? carousel : reel}
+      />
 
       <motion.div
         className="h-full w-full max-w-[100rem] flex items-center justify-between"
@@ -150,11 +149,7 @@ function ProjectSelect({
             currentIndex={currentIndex}
           />
         </div>
-        <div className="right-8 w-min flex flex-col justify-center items-center space-y-4">
-          <Image src={arrowUp} alt="arrowUp" />
-          <p>Scroll</p>
-          <Image src={arrowDown} alt="arrowDown" />
-        </div>
+        <ScrollText currentIndex={currentIndex} />
       </motion.div>
     </div>
   );

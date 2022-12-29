@@ -4,7 +4,7 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
 import Nav from "../components/Nav/nav";
 import Intro from "../components/Home/intro";
-import Projects from "../components/Home/projects";
+import PhotoVideoSelect from "../components/Home/photoVideoSelect";
 import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
 import takeoff from "../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakarin-saisorn-1.jpg";
@@ -83,7 +83,7 @@ export default function Home() {
             ref={projectsRef}
             className="py-24 my-48 h-[150vh] flex items-center"
           >
-            <Projects />
+            <PhotoVideoSelect />
           </motion.section>
           <motion.section className="py-24 my-48 h-screen flex items-center">
             <Footer />

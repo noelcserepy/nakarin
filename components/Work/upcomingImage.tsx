@@ -70,7 +70,7 @@ function UpcomingImage({
           objectFit: "cover",
           filter: "brightness(20%)",
         }}
-        sizes="100vw"
+        sizes="50vw"
       />
     </motion.div>
   );

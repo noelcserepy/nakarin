@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { NextFontWithVariable } from "@next/font/dist/types";
 import { useState } from "react";
 import PhotoIndexContext from "../components/Common/photoIndexContext";
@@ -65,7 +65,9 @@ export default function App({ Component, pageProps }: AppProps) {
           ${technor.variable}  
           h-full w-screen font-sans bg-light text-dark`}
         >
-          <Component {...pageProps} />
+          <AnimatePresence>
+            <Component {...pageProps} key={url} />
+          </AnimatePresence>
         </motion.main>
       </VideoIndexContext.Provider>
     </PhotoIndexContext.Provider>

@@ -26,8 +26,6 @@ function PrevAndNextImages({
 }) {
   const maxIndex = projectData.length - 1;
 
-  console.log(currentIndex);
-
   return (
     <motion.div className="h-[250vh] w-full absolute flex flex-col justify-center items-center -z-10 ">
       {projectData.map((project: any, i: number) => (
