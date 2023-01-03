@@ -24,7 +24,5 @@ body::-webkit-scrollbar {
 }
 
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
   overscroll-behavior: none;
 }

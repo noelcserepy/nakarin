@@ -91,59 +91,65 @@ export default function Intro({
   const spanTexts = headerText.split(" ");
 
   return (
-    <div className="flex flex-col h-full justify-between mx-auto max-w-full px-8 sm:px-0 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-[75rem]">
+    <div className="flex flex-col h-min justify-between mx-auto max-w-full px-8 sm:px-0 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-[75rem]">
       <motion.div
-        className="flex w-full justify-between h-full"
+        className="flex flex-col md:flex-row w-full justify-between h-[400px] md:h-[600px]"
         variants={containerVariants}
         initial="initial"
         whileInView="animate"
         viewport={{ amount: 0.4 }}
       >
-        <div className="flex flex-col justify-center space-y-16 items-start w-1/2 h-full">
-          <motion.h4
-            className="font-switzer font-light text-5xl w-full  flex flex-wrap leading-tight "
-            variants={h4Variants}
-          >
-            {spanTexts.map((t, i) => (
-              <motion.span
-                key={i}
-                className="overflow-hidden mr-3 inline-flex relative"
-              >
+        <div className="flex flex-col justify-center space-y-16 items-start w-full md:w-1/2 h-full">
+          <div className="w-full h-full flex flex-col gap-8">
+            <motion.h4
+              className="font-switzer font-light text-4xl md:text-5xl w-full  flex flex-wrap leading-tight "
+              variants={h4Variants}
+            >
+              {spanTexts.map((t, i) => (
                 <motion.span
-                  variants={headerSpanVariants}
-                  className="block relative"
+                  key={i}
+                  className="overflow-hidden mr-3 h-14 inline-flex relative"
                 >
-                  {t + " "}
+                  <motion.span
+                    variants={headerSpanVariants}
+                    className="block relative"
+                  >
+                    {t + " "}
+                  </motion.span>
                 </motion.span>
-              </motion.span>
-            ))}
-          </motion.h4>
+              ))}
+            </motion.h4>
 
-          <motion.div
-            className="flex justify-start items-center w-full h-12"
-            variants={brandVariants}
-          >
-            <div className="flex justify-center w-full">
-              <Image alt="Oppo logo" src={oppoLogo} className="h-12" />
-            </div>
-            <div className="flex justify-center w-full">
-              <Image
-                alt="Dosenbach logo"
-                src={dosenbachLogo}
-                className="h-12"
-              />
-            </div>
-            <div className="flex justify-center w-full">
-              <Image
-                alt="Weltklasse Zürich logo"
-                src={weltklasseLogo}
-                className="h-12"
-              />
-            </div>
-            <div className="flex justify-center w-full">
-              <Image alt="Elmer Citro logo" src={elmerLogo} className="h-12" />
-            </div>
-          </motion.div>
+            <motion.div
+              className="flex justify-start items-center w-full h-12"
+              variants={brandVariants}
+            >
+              <div className="flex justify-center w-full">
+                <Image alt="Oppo logo" src={oppoLogo} className="h-12" />
+              </div>
+              <div className="flex justify-center w-full">
+                <Image
+                  alt="Dosenbach logo"
+                  src={dosenbachLogo}
+                  className="h-12"
+                />
+              </div>
+              <div className="flex justify-center w-full">
+                <Image
+                  alt="Weltklasse Zürich logo"
+                  src={weltklasseLogo}
+                  className="h-12"
+                />
+              </div>
+              <div className="flex justify-center w-full">
+                <Image
+                  alt="Elmer Citro logo"
+                  src={elmerLogo}
+                  className="h-12"
+                />
+              </div>
+            </motion.div>
+          </div>
 
           <motion.div className="flex gap-4" variants={buttonVariants}>
             <Button
@@ -161,7 +167,7 @@ export default function Intro({
           </motion.div>
         </div>
 
-        <div className="flex justify-end items-start w-5/12 h-full relative">
+        <div className="hidden md:flex justify-end items-start w-5/12 h-full relative">
           <Parallax twClass="h-full w-full flex justify-center items-center">
             <div className="h-full w-full relative">
               <Image

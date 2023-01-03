@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
           ${bespokeSlab.variable} 
           ${bespokeSlabItalic.variable} 
           ${technor.variable}  
-          h-full w-screen font-sans bg-light text-dark`}
+          h-full w-full font-sans bg-light text-dark overflow-x-hidden overflow-y-auto`}
         >
           <AnimatePresence>
             <Component {...pageProps} key={url} />

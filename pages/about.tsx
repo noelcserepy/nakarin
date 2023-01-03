@@ -53,9 +53,17 @@ function About() {
           <div className="flex flex-col space-y-8">
             <h1 className="text-title">About</h1>
             <p className="text-subtitle">
-              Lorem ipsum dolor sit amet consectetur. Cras quisque et eget ut a.
-              Malesuada mi integer eget pellentesque ut vestibulum scelerisque
-              dictumst.
+              Geboren 1994 in Thailand und aufgewachsen im Zürcher Oberland
+              absolvierte Nakarin Saisorn eine Lehre als Grafiker. Nach einer
+              kleinen Auszeit in seinem Heimatland hat er anschliessend
+              verschiedenen Fotografen assistiert und konnte seine angeeigneten
+              Fähigkeiten in der Fotografie verfeinern. Seit 2019 ist er nun
+              selbständiger Fotograf und hat sich in den Bereichen
+              Architekturfotografie, Editorial-, Event- und
+              Landschaftsfotografie spezialisiert. Seine Kunden sind
+              Architekturbüros, lokale Unternehmen aus verschiedenen Branchen
+              sowie Stiftungen im kulturellen Bereich. Nakarin Saisorn reist
+              leidenschaftlich gerne und fotografiert in der ganzen Schweiz.
             </p>
           </div>
           <div className="flex gap-x-8 gap-y-2 gap flex-wrap">

@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { ScrollerMotion } from "scroller-motion";
 import { motion, useTransform, useScroll } from "framer-motion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import Image from "next/image";
 import Nav from "../components/Nav/nav";
 import Intro from "../components/Home/intro";
@@ -8,10 +9,12 @@ import PhotoVideoSelect from "../components/Home/photoVideoSelect";
 import ScrollText from "../components/Home/scrolltext";
 import Parallax from "../components/Common/parallax";
 import takeoff from "../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakarin-saisorn-1.jpg";
+import michel from "../public/projects/michel_freudenberg/michel-freudenberg-nakarin-saisorn-0.jpg";
 import Footer from "../components/Common/footer";
 import Curtain from "../components/Common/curtain";
 
 export default function Home() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const introRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: introRef,
@@ -39,17 +42,17 @@ export default function Home() {
         }}
       >
         <Curtain />
-        <header className="w-screen h-[110vh] relative text-light overflow-clip">
+        <header className="h-[110vh] w-full relative text-light overflow-clip">
           {/* Background Image */}
           <Parallax
-            twClass="h-full w-full flex items-center justify-center"
+            twClass="h-full w-full md:h-screen md:w-full flex items-center justify-center"
             offset={["center center", "end start"]}
             depth={100}
             zoom={120}
           >
             <Image
               alt="Nakarin Saisorn - Tremondi Quinten Interior"
-              src={takeoff}
+              src={isMobile ? michel : takeoff}
               priority
               fill
               style={{
@@ -62,7 +65,7 @@ export default function Home() {
 
           {/* Overlay */}
           <div
-            className="w-screen h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-end"
+            className="w-full h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-center items-center"
             style={{ zIndex: "10" }}
           >
             <ScrollText />
@@ -73,7 +76,7 @@ export default function Home() {
         </header>
 
         <motion.div
-          className="z-10"
+          className="z-10 w-full"
           initial={{ y: 0 }}
           style={{ y: yUp, backgroundColor: bgColor }}
         >
