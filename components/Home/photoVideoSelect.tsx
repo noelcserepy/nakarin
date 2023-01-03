@@ -120,7 +120,7 @@ function PhotoVideoSelect() {
       animate="initial"
       exit="exit"
     >
-      <motion.div className="w-screen h-[90vh] relative">
+      <motion.div className="aspect-square w-[95vw] mx-auto md:w-screen md:h-[90vh] relative">
         <ProjectSelectContainer
           left={true}
           setHoverLeft={setHoverLeft}
@@ -129,7 +129,7 @@ function PhotoVideoSelect() {
           handleClick={videoClickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-title left-24"
+            className="absolute z-20 text-title text-5xl left-0 md:text-8xl md:left-24"
             variants={textVariantsLeft}
             exit="exit"
           >
@@ -155,7 +155,7 @@ function PhotoVideoSelect() {
           handleClick={photoClickHandler}
         >
           <motion.h3
-            className="absolute z-20 text-title -translate-y-50% right-24"
+            className="absolute z-20 text-title -translate-y-50% right-0 text-5xl md:text-8xl md:right-24"
             variants={textVariantsRight}
             exit="exit"
           >

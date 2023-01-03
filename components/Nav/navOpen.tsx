@@ -62,7 +62,7 @@ function NavOpen({
       />
 
       <motion.div
-        className="h-full min-w-[400px] bg-light flex flex-col justify-evenly fixed right-0 top-0 z-50 rounded-l  px-16 py-16 overflow-hidden"
+        className="h-full w-full sm:w-[400px] bg-light flex flex-col justify-evenly fixed right-0 top-0 z-50 rounded-l px-16 py-16 overflow-hidden"
         variants={modalVariants}
         initial="hidden"
         animate="visible"

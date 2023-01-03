@@ -86,11 +86,11 @@ export default function Home() {
           <motion.section
             id="projects"
             ref={projectsRef}
-            className="py-24 my-48 h-[150vh] flex items-center"
+            className="py-24 my-48 h-[150vh] flex items-center justify-center"
           >
             <PhotoVideoSelect />
           </motion.section>
-          <motion.section className="py-24 my-48 h-screen flex items-center">
+          <motion.section className="py-24 my-24 h-screen flex items-center">
             <Footer />
           </motion.section>
         </motion.div>

@@ -58,8 +58,7 @@ function RotationContainer({
 
   return (
     <motion.div
-      // switch to w-full when screen aspect ratio flips to portrait
-      className={`h-full aspect-square`}
+      className={`w-[95vw] md:w-auto md:h-full aspect-square`}
       variants={left ? leftVariants : rightVariants}
       custom={rot}
       style={{ originX: 0.5, originY: 0.5, rotate: rot }}
