@@ -21,17 +21,17 @@ export function useMediaQuery(breakpoint) {
     query = twQueries[breakpoint];
   }
 
+  const matchMedia = () => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    return media;
+  };
+
+  // typeof window !== "undefined" && matchMedia();
+
   useEffect(() => {
-    const matchMedia = () => {
-      const media = window.matchMedia(query);
-      if (media.matches !== matches) {
-        setMatches(media.matches);
-      }
-      return media;
-    };
-
-    matchMedia();
-
     const media = matchMedia();
     const listener = () => {
       setMatches(media.matches);

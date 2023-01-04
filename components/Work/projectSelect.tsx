@@ -12,6 +12,7 @@ import ScrollText from "./scrollText";
 import reel from "../../public/graphics/movie_reel.svg";
 import carousel from "../../public/graphics/carousel.svg";
 import Curtain from "../Common/curtain";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const projectVariants = {
   hidden: {
@@ -54,6 +55,38 @@ const textVariants = {
     },
   },
 };
+const textVariantsMobile = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+  },
+  enter: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 1.5,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.14,
+      ease: "easeOut",
+    },
+  },
+  next: {
+    opacity: 0,
+    y: 10,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
+  },
+};
 
 function ProjectSelect({
   segment,
@@ -66,6 +99,7 @@ function ProjectSelect({
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const router = useRouter();
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const { totalScroll } = useIndexScroller(
     projectData.length - 1,
@@ -110,22 +144,24 @@ function ProjectSelect({
       />
 
       <motion.div
-        className="h-full w-full max-w-[100rem] flex items-center justify-between"
+        className="h-full w-full max-w-[100rem] flex flex-col-reverse md:flex-row items-center justify-between"
         variants={projectVariants}
         animate={controls}
         initial="hidden"
       >
         <motion.div
-          className="h-full w-5/12 flex flex-col items-start justify-center relative z-10"
-          variants={textVariants}
+          className="flex flex-col items-start justify-end h-full w-full md:w-5/12 relative z-10 md:justify-center"
+          variants={isMobile ? textVariantsMobile : textVariants}
         >
-          <div className="w-full flex flex-col justify-between items-start space-y-8">
-            <div className="flex flex-col items-start">
-              <p className="text-subtitle">
+          <div className="w-full flex flex-col justify-between items-center md:items-start space-y-8">
+            <div className="flex flex-col items-center md:items-start">
+              <p className="text-subtitle text-lg md:text-2xl">
                 <span>{currentProject.yearStart}</span>{" "}
                 <span>{currentProject.location}</span>
               </p>
-              <h2 className="text-title">{currentProject.name}</h2>
+              <h2 className="text-title text-6xl md:text-6xl xl:text-8xl text-center md:text-start">
+                {currentProject.name}
+              </h2>
             </div>
             <Button
               shade="lightFull"
@@ -136,7 +172,7 @@ function ProjectSelect({
           </div>
         </motion.div>
 
-        <div className="h-full w-6/12 flex items-center justify-end pl-8 relative">
+        <div className="h-full w-full md:w-6/12 flex items-center justify-end md:pl-8 relative pt-8 md:pt-0">
           <MainImage
             project={currentProject}
             currentIndex={currentIndex}

@@ -55,7 +55,9 @@ function MainImage({
         src={project.thumbnail}
         alt={project.name}
         fill
-        style={{ objectFit: "cover" }}
+        style={{
+          objectFit: "cover",
+        }}
         sizes="50vw"
         priority
       />

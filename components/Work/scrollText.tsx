@@ -72,7 +72,7 @@ function ScrollText({ currentIndex }: { currentIndex: number }) {
 
   return (
     <motion.div
-      className="right-8 w-min flex flex-col justify-center items-center space-y-4"
+      className="right-8 w-min hidden md:flex flex-col justify-center items-center space-y-4"
       variants={containerVariants}
     >
       <Image src={arrowUp} alt="arrowUp" />
