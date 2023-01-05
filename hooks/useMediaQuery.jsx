@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Checks if the window width matches a certain breakpoint.
@@ -29,7 +29,7 @@ export function useMediaQuery(breakpoint) {
     return media;
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const media = matchMedia();
     const listener = () => {
       setMatches(media.matches);

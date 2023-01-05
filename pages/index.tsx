@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { ScrollerMotion } from "scroller-motion";
 import { motion, useTransform, useScroll } from "framer-motion";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import Curtain from "../components/Common/curtain";
 import IsMobileContext from "../components/Common/IsMobileContext";
 
 export default function Home() {
-  const { isMobile, setIsMobile } = useContext(IsMobileContext);
+  const { isMobile } = useContext(IsMobileContext);
 
   const introRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -34,6 +34,7 @@ export default function Home() {
     <>
       <Nav back={false} />
       <ScrollerMotion
+        disabled={isMobile}
         scale={1}
         spring={{
           stiffness: 250,
@@ -105,7 +106,7 @@ export default function Home() {
           >
             <PhotoVideoSelect />
           </motion.section>
-          <motion.section className="py-24 my-24 h-screen flex items-center">
+          <motion.section className="py-24 mt-24 h-screen flex items-center">
             <Footer />
           </motion.section>
         </motion.div>

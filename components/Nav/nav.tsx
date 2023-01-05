@@ -8,16 +8,22 @@ function Nav({
   back = true,
   expanded = false,
   dark = false,
+  backRoute,
 }: {
   back?: boolean;
   expanded?: boolean;
   dark?: boolean;
+  backRoute?: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const handleBack = () => {
-    router.back();
+    if (backRoute) {
+      router.push(backRoute);
+    } else {
+      router.back();
+    }
   };
 
   const navProps = {

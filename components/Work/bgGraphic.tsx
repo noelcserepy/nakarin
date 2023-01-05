@@ -32,8 +32,7 @@ function BgGraphic({
   graphic: any;
 }) {
   const controls = useAnimationControls();
-  const { isMobile, setIsMobile } = useContext(IsMobileContext);
-  console.log(isMobile);
+  const { isMobile } = useContext(IsMobileContext);
 
   useEffect(() => {
     controls.start("visible");

@@ -137,7 +137,7 @@ function ProjectSelect({
 
   return (
     <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
-      <Nav />
+      <Nav backRoute="/" />
       <Curtain />
       <BgGraphic
         totalScroll={totalScroll}
