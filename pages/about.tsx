@@ -57,12 +57,12 @@ function About() {
           <div className="flex flex-col gap-4">
             <h1 className="text-title text-6xl md:text-8xl">About</h1>
             <p className="text-subtitle text-xl">
-              Hi, I'm Nakarin Saisorn, a freelance photographer based in
+              {`Hi, I'm Nakarin Saisorn, a freelance photographer based in
               Switzerland. I specialize in architectural, editorial, event, and
               landscape photography and have worked with clients including
               architectural firms, local businesses, and cultural foundations. I
               am passionate about traveling and capturing unique images around
-              Switzerland. Let me bring your vision to life through my lens.
+              Switzerland. Let me bring your vision to life through my lens.`}
             </p>
           </div>
           <div className="flex gap-x-8 gap-y-2 gap flex-wrap">
