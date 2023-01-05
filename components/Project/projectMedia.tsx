@@ -46,7 +46,9 @@ function ProjectMedia({ project }: { project: Project }) {
       <div className="h-full w-full md:w-[70%] flex flex-col gap-4 md:gap-16 items-center">
         {merged.map((arr: any, index: number) => {
           if (isMobile) {
-            return <Image src={arr[0]} alt={project?.name + index} />;
+            return (
+              <Image key={index} src={arr[0]} alt={project?.name + index} />
+            );
           }
           if (arr.length === 2) {
             return (
