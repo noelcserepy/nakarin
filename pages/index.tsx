@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ScrollerMotion } from "scroller-motion";
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import Image from "next/image";
 import Nav from "../components/Nav/nav";
 import Intro from "../components/Home/intro";
@@ -12,9 +11,11 @@ import takeoff from "../public/projects/takeoff_birrfeld/takeoff-birrfeld-nakari
 import michel from "../public/projects/michel_freudenberg/michel-freudenberg-nakarin-saisorn-0.jpg";
 import Footer from "../components/Common/footer";
 import Curtain from "../components/Common/curtain";
+import IsMobileContext from "../components/Common/IsMobileContext";
 
 export default function Home() {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { isMobile, setIsMobile } = useContext(IsMobileContext);
+
   const introRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: introRef,
@@ -50,22 +51,36 @@ export default function Home() {
             depth={100}
             zoom={120}
           >
-            <Image
-              alt="Nakarin Saisorn - Tremondi Quinten Interior"
-              src={isMobile ? michel : takeoff}
-              priority
-              fill
-              style={{
-                objectFit: "cover",
-                objectPosition: "center center",
-              }}
-              sizes="100vw"
-            />
+            {isMobile ? (
+              <Image
+                alt="Nakarin Saisorn - Tremondi Quinten Interior"
+                src={michel}
+                priority
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
+                sizes="100vw"
+              />
+            ) : (
+              <Image
+                alt="Nakarin Saisorn - Tremondi Quinten Interior"
+                src={takeoff}
+                priority
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                }}
+                sizes="100vw"
+              />
+            )}
           </Parallax>
 
           {/* Overlay */}
           <div
-            className="w-full h-screen py-48 z-10 absolute top-0 left-0 flex flex-col justify-center items-center"
+            className="w-full h-screen z-10 absolute top-0 left-0 flex flex-col justify-start py-24 md:py-0 md:justify-center items-center"
             style={{ zIndex: "10" }}
           >
             <ScrollText />

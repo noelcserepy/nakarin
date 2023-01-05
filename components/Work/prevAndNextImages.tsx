@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import UpcomingImage from "./upcomingImage";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 import UpcomingImageMobile from "./upcomingImageMobile";
-import { useEffect } from "react";
+import { useContext } from "react";
+import IsMobileContext from "../Common/IsMobileContext";
 
 const prevVariants = {
   hidden: {
@@ -25,9 +25,8 @@ function PrevAndNextImages({
   projectData: any;
   currentIndex: number;
 }) {
+  const { isMobile, setIsMobile } = useContext(IsMobileContext);
   const maxIndex = projectData.length - 1;
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  console.log("isMobile", isMobile);
 
   if (isMobile) {
     return (

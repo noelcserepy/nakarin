@@ -1,7 +1,7 @@
 import { motion, MotionValue, useAnimationControls } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useContext, useEffect } from "react";
+import IsMobileContext from "../Common/IsMobileContext";
 
 const bgVariants = {
   hidden: {
@@ -32,7 +32,8 @@ function BgGraphic({
   graphic: any;
 }) {
   const controls = useAnimationControls();
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { isMobile, setIsMobile } = useContext(IsMobileContext);
+  console.log(isMobile);
 
   useEffect(() => {
     controls.start("visible");
@@ -53,20 +54,37 @@ function BgGraphic({
 
   return (
     <div className="absolute top-[60%] left-1/2 md:-translate-y-1/2 -translate-x-1/2 md:top-1/2 md:left-0 ">
-      <motion.div
-        className="w-[110vw] md:w-auto md:h-[120vh] aspect-square  relative"
-        variants={bgVariants}
-        initial={isMobile ? "hiddenMobile" : "hidden"}
-        animate={controls}
-      >
-        <Image
-          src={graphic}
-          alt="Movie reel graphic"
-          fill
-          priority
-          style={{ objectFit: "contain", objectPosition: "center center" }}
-        />
-      </motion.div>
+      {isMobile ? (
+        <motion.div
+          className="w-[110vw] md:w-auto md:h-[120vh] aspect-square  relative"
+          variants={bgVariants}
+          initial="hiddenMobile"
+          animate={controls}
+        >
+          <Image
+            src={graphic}
+            alt="Movie reel graphic"
+            fill
+            priority
+            style={{ objectFit: "contain", objectPosition: "center center" }}
+          />
+        </motion.div>
+      ) : (
+        <motion.div
+          className="w-[110vw] md:w-auto md:h-[120vh] aspect-square  relative"
+          variants={bgVariants}
+          initial="hidden"
+          animate={controls}
+        >
+          <Image
+            src={graphic}
+            alt="Movie reel graphic"
+            fill
+            priority
+            style={{ objectFit: "contain", objectPosition: "center center" }}
+          />
+        </motion.div>
+      )}
     </div>
   );
 }

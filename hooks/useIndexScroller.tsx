@@ -1,7 +1,7 @@
 import { useMotionValue } from "framer-motion";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import _ from "lodash";
-import { useMediaQuery } from "../hooks/useMediaQuery";
+import IsMobileContext from "../components/Common/IsMobileContext";
 
 function useIndexScroller(
   maxIndex: number,
@@ -10,7 +10,7 @@ function useIndexScroller(
 ) {
   const ready = useRef(true);
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { isMobile, setIsMobile } = useContext(IsMobileContext);
 
   const indexRef = useRef(currentIndex);
   const totalScroll = useMotionValue(0);
@@ -33,6 +33,8 @@ function useIndexScroller(
     function handleTouchStart(e: TouchEvent) {
       startY = e.touches[0].clientY;
       startX = e.touches[0].clientX;
+      endY = e.touches[0].clientY;
+      endX = e.touches[0].clientX;
       startTime = e.timeStamp;
     }
 

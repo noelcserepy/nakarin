@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 /**
  * Checks if the window width matches a certain breakpoint.
  * @param {string} breakpoint A Tailwind breakpoint (e.g. "sm") or media query (e.g. "(min-width: 640px)").
- * @return {boolean} True if the viewport width matches the breakpoint.
+ * @return {[boolean, React.Dispatch<React.SetStateAction<boolean>>]} True if the viewport width matches the breakpoint.
  */
 export function useMediaQuery(breakpoint) {
   const [matches, setMatches] = useState(false);
@@ -29,9 +29,7 @@ export function useMediaQuery(breakpoint) {
     return media;
   };
 
-  // typeof window !== "undefined" && matchMedia();
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     const media = matchMedia();
     const listener = () => {
       setMatches(media.matches);
@@ -40,5 +38,5 @@ export function useMediaQuery(breakpoint) {
     return () => media.removeEventListener("change", listener);
   }, [matches, query]);
 
-  return matches;
+  return [matches, setMatches];
 }

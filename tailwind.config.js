@@ -33,6 +33,11 @@ module.exports = {
       aspectRatio: {
         "3/2": "3 / 2",
       },
+      hyphens: {
+        manual: "manual",
+        auto: "auto",
+        none: "none",
+      },
     },
   },
   plugins: [],

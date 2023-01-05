@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 import projectData from "../../components/Work/projectData";
 import Nav from "../../components/Nav/nav";
@@ -12,7 +12,7 @@ import ScrollText from "./scrollText";
 import reel from "../../public/graphics/movie_reel.svg";
 import carousel from "../../public/graphics/carousel.svg";
 import Curtain from "../Common/curtain";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import IsMobileContext from "../Common/IsMobileContext";
 
 const projectVariants = {
   hidden: {
@@ -98,8 +98,9 @@ function ProjectSelect({
   setInitialIndex: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const { isMobile, setIsMobile } = useContext(IsMobileContext);
+
   const router = useRouter();
-  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const { totalScroll } = useIndexScroller(
     projectData.length - 1,
