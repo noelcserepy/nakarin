@@ -41,10 +41,10 @@ const imageVariants = {
 };
 
 function About() {
-  const { isMobile, setIsMobile } = useContext(IsMobileContext);
+  const { isMobile } = useContext(IsMobileContext);
 
   return (
-    <div className="h-full md:h-screen w-screen bg-dark p-8 flex items-start md:items-center justify-center ">
+    <div className="h-full md:h-screen w-screen bg-dark p-8 flex items-start md:items-center justify-center">
       <Curtain />
       <Nav />
       <div className="h-full md:h-3/4 w-full flex flex-col md:flex-row items-center justify-between max-w-[1440px] pt-12 md:pt-0 gap-8">
@@ -55,8 +55,8 @@ function About() {
           animate="visible"
         >
           <div className="flex flex-col gap-4">
-            <h1 className="text-title text-6xl md:text-8xl">About</h1>
-            <p className="text-subtitle text-xl">
+            <h1 className="text-title-mobile md:text-title">About</h1>
+            <p className="text-paragraph">
               {`Hi, I'm Nakarin Saisorn, a freelance photographer based in
               Switzerland. I specialize in architectural, editorial, event, and
               landscape photography and have worked with clients including

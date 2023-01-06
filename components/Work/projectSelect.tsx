@@ -136,7 +136,7 @@ function ProjectSelect({
   }, [currentProject]);
 
   return (
-    <div className="bg-dark text-light h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
+    <div className="bg-dark h-screen w-screen overflow-hidden z-0 flex relative justify-center p-8">
       <Nav backRoute="/" />
       <Curtain />
       <BgGraphic
@@ -156,11 +156,11 @@ function ProjectSelect({
         >
           <div className="w-full flex flex-col justify-between items-center md:items-start space-y-8">
             <div className="flex flex-col items-center md:items-start">
-              <p className="text-subtitle text-lg md:text-2xl">
+              <p className="text-subtitle-mobile md:text-subtitle text-lg md:text-2xl">
                 <span>{currentProject.yearStart}</span>{" "}
                 <span>{currentProject.location}</span>
               </p>
-              <h2 className="text-title text-6xl md:text-6xl xl:text-8xl text-center md:text-start">
+              <h2 className="text-title-mobile md:text-title text-center md:text-start">
                 {currentProject.name}
               </h2>
             </div>

@@ -69,15 +69,10 @@ function MenuItem({ text }: { text: string }) {
   return (
     <motion.li className="relative group">
       {isCurrentRoute && (
-        <div
-          className="rounded-full bg-beige w-4 h-4 absolute top-1/2 -translate-y-1/2 -left-8 transition-all duration-200 ease-out group-hover:-translate-x-2"
-          // variants={dotVariants}
-          // onHoverStart={() => dotX.set(-10)}
-          // onHoverEnd={() => dotX.set(0)}
-        />
+        <div className="rounded-full bg-beige w-4 h-4 absolute top-1/2 -translate-y-1/2 -left-8 transition-all duration-200 ease-out group-hover:-translate-x-2" />
       )}
       <motion.div
-        className="text-title text-5xl text-dark cursor-pointer transition-all duration-200 ease-out flex gap-4"
+        className="text-title-mobile text-dark cursor-pointer transition-all duration-200 ease-out flex gap-4"
         variants={textVariants}
         onClick={handleClick}
         style={{ x: textX }}

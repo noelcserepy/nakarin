@@ -6,8 +6,14 @@
   .text-title {
     @apply font-switzer text-8xl font-extrabold text-start tracking-wide text-light;
   }
+  .text-title-mobile {
+    @apply font-switzer text-6xl font-extrabold text-start tracking-wide text-light;
+  }
   .text-subtitle {
-    @apply font-switzer font-light text-2xl text-light;
+    @apply font-bespokeSlab font-light text-3xl text-light;
+  }
+  .text-subtitle-mobile {
+    @apply font-bespokeSlab font-light text-2xl text-light;
   }
   .text-paragraph {
     @apply font-switzer font-light text-light;

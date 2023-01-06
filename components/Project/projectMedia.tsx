@@ -42,7 +42,7 @@ function ProjectMedia({ project }: { project: Project }) {
     }
   }
   return (
-    <div className="w-full h-full flex flex-col gap-4 justify-end items-center p-8  md:pt-32">
+    <div className="w-full h-full flex flex-col gap-4 justify-end items-start p-8">
       <div className="h-full w-full md:w-[70%] flex flex-col gap-4 md:gap-16 items-center">
         {merged.map((arr: any, index: number) => {
           if (isMobile) {

@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="h-full flex flex-col justify-center mx-auto max-w-full px-8 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-[90rem]">
       <div className="h-[60%] flex items-end ">
-        <h3 className="text-6xl md:text-8xl text-light mb-12 text-center md:text-start">
+        <h3 className="text-title-mobile md:text-title mb-12 text-center md:text-start">
           {"Let's work together"}
         </h3>
       </div>

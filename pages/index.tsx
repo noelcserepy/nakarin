@@ -85,7 +85,7 @@ export default function Home() {
             style={{ zIndex: "10" }}
           >
             <ScrollText />
-            <div className="text-subtitle text-center whitespace-pre-line px-8">
+            <div className="text-subtitle-mobile md:text-subtitle text-center whitespace-pre-line mt-8">
               {`Freelance Photographer & \nVideographer`}
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function Home() {
           <motion.section
             id="projects"
             ref={projectsRef}
-            className="py-24 my-48 h-[150vh] flex items-center justify-center"
+            className="py-24 my-48 h-[150vh] flex items-center justify-center bg-dark"
           >
             <PhotoVideoSelect />
           </motion.section>

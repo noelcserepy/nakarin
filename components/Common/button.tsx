@@ -64,7 +64,7 @@ export default function Button({
   const sizes: Sizes = {
     none: "",
     small: "px-3 py-1",
-    big: "text-xl px-4 py-2",
+    big: "px-4 py-2",
   };
 
   if (shade === "light" || shade === "dark") {
@@ -73,7 +73,7 @@ export default function Button({
 
   return (
     <motion.button
-      className={`font-bespokeSlab font-bold text-lg ${shades[shade]} ${sizes[size]}`}
+      className={`text-paragraph ${shades[shade]} ${sizes[size]}`}
       variants={buttonVariants}
       whileHover="hover"
       onClick={() => onClick && onClick()}

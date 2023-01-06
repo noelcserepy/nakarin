@@ -102,13 +102,13 @@ export default function Intro({
         <div className="flex flex-col justify-center space-y-16 items-start w-full md:w-1/2 h-full">
           <div className="w-full h-full flex flex-col gap-8">
             <motion.h4
-              className="font-switzer font-light text-4xl md:text-5xl w-full  flex flex-wrap leading-tight "
+              className="text-dark text-subtitle-mobile md:text-subtitle md:text-dark w-full flex flex-wrap leading-tight "
               variants={h4Variants}
             >
               {spanTexts.map((t, i) => (
                 <motion.span
                   key={i}
-                  className="overflow-hidden mr-3 h-14 inline-flex relative"
+                  className="overflow-hidden mr-2 h-10 inline-flex relative"
                 >
                   <motion.span
                     variants={headerSpanVariants}
