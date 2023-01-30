@@ -76,7 +76,11 @@ function ScrollText({ currentIndex }: { currentIndex: number }) {
       variants={containerVariants}
     >
       <Image src={arrowUp} alt="arrowUp" />
-      <motion.p animate={controls} variants={scrollTextVariants}>
+      <motion.p
+        animate={controls}
+        variants={scrollTextVariants}
+        className="text-light"
+      >
         Scroll
       </motion.p>
       <Image src={arrowDown} alt="arrowDown" />
