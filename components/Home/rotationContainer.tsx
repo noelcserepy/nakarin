@@ -58,7 +58,7 @@ function RotationContainer({
 
   return (
     <motion.div
-      className={`w-[95vw] md:w-auto md:h-full aspect-square`}
+      className={`w-[95vw] md:w-[768px] lg:w-[953px] md:h-[768px] lg:h-[953px] aspect-square`}
       variants={left ? leftVariants : rightVariants}
       custom={rot}
       style={{ originX: 0.5, originY: 0.5, rotate: rot }}
