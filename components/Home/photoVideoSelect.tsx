@@ -120,7 +120,7 @@ function PhotoVideoSelect() {
       animate="initial"
       exit="exit"
     >
-      <motion.div className="aspect-square w-[95vw] mx-auto md:w-screen md:h-[90vh] relative">
+      <motion.div className="aspect-square w-[95vw] mx-auto md:w-screen lg:h-[953px] relative">
         <ProjectSelectContainer
           left={true}
           setHoverLeft={setHoverLeft}
