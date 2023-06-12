@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 
-/**
- * Checks if the window width matches a certain breakpoint.
- * @param {string} breakpoint A Tailwind breakpoint (e.g. "sm") or media query (e.g. "(min-width: 640px)").
- * @return {[boolean, React.Dispatch<React.SetStateAction<boolean>>]} True if the viewport width matches the breakpoint.
- */
-export function useMediaQuery(breakpoint) {
-  const [matches, setMatches] = useState(false);
   const twQueries = {
-    xs: "(max-width: 639px)",
-    sm: "(min-width: 640px)",
-    md: "(min-width: 768px)",
-    lg: "(min-width: 1024px)",
-    xl: "(min-width: 1280px)",
+    "xs": "(max-width: 639px)",
+    "sm": "(min-width: 640px)",
+    "md": "(min-width: 768px)",
+    "lg": "(min-width: 1024px)",
+    "xl": "(min-width: 1280px)",
     "2xl": "(min-width: 1536px)",
-  };
+  } as const;
 
-  let query = breakpoint;
+type TwQueries =keyof typeof twQueries
+type MediaQueries = typeof twQueries[TwQueries]
+
+type Breakpoint = TwQueries | MediaQueries
+export function useMediaQuery(breakpoint: Breakpoint) {
+  const [matches, setMatches] = useState(false);
+
+  let query= breakpoint;
   if (Object.keys(twQueries).find((key) => key === breakpoint)) {
-    query = twQueries[breakpoint];
+    query = twQueries[breakpoint as TwQueries]
   }
 
   const matchMedia = () => {
@@ -40,3 +40,4 @@ export function useMediaQuery(breakpoint) {
 
   return [matches, setMatches];
 }
+
