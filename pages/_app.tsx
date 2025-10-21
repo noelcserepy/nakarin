@@ -1,8 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import { AnimatePresence, motion } from "framer-motion";
-import { NextFontWithVariable } from "@next/font/dist/types";
 import { useEffect, useState } from "react";
 import PhotoIndexContext from "../components/Common/photoIndexContext";
 import { useRouter } from "next/router";
@@ -11,35 +10,35 @@ import VideoIndexContext from "../components/Common/videoIndexContext";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import IsMobileContext from "../components/Common/IsMobileContext";
 
-const switzer: NextFontWithVariable = localFont({
+const switzer = localFont({
   src: "./Switzer-Variable.woff2",
   style: "normal",
   variable: "--font-switzer",
   display: "swap",
   weight: "100 900",
 });
-const switzerItalic: NextFontWithVariable = localFont({
+const switzerItalic = localFont({
   src: "./Switzer-VariableItalic.woff2",
   style: "italic",
   variable: "--font-switzer-italic",
   display: "swap",
   weight: "100 900",
 });
-const bespokeSlab: NextFontWithVariable = localFont({
+const bespokeSlab = localFont({
   src: "./BespokeSlab-Variable.woff2",
   style: "normal",
   variable: "--font-bespokeSlab",
   display: "swap",
   weight: "100 900",
 });
-const bespokeSlabItalic: NextFontWithVariable = localFont({
+const bespokeSlabItalic = localFont({
   src: "./BespokeSlab-VariableItalic.woff2",
   style: "italic",
   variable: "--font-bespokeSlab-italic",
   display: "swap",
   weight: "100 900",
 });
-const technor: NextFontWithVariable = localFont({
+const technor = localFont({
   src: "./Technor-Variable.woff2",
   style: "normal",
   variable: "--font-technor",

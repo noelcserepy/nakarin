@@ -1,4 +1,4 @@
-import { Project } from "../../components/Work/projectData";
+import type { Project } from "../../components/Work/projectData";
 import { ScrollerMotion } from "scroller-motion";
 import Nav from "../../components/Nav/nav";
 import projectData from "../../components/Work/projectData";

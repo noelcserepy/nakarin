@@ -2,10 +2,10 @@ import { motion, MotionValue, useTransform } from "framer-motion";
 import panthera from "../../public/projects/panthera_onca/panthera-onca-nakarin-saisorn-6.jpg";
 import Image from "next/image";
 import Button from "../Common/button";
-import dosenbachLogo from "public/logos/dosenbach_logo.svg";
-import elmerLogo from "public/logos/elmer_citro_logo.svg";
-import oppoLogo from "public/logos/oppo_logo.svg";
-import weltklasseLogo from "public/logos/weltklasse_zh_logo.svg";
+import dosenbachLogo from "../../public/logos/dosenbach_logo.svg";
+import elmerLogo from "../../public/logos/elmer_citro_logo.svg";
+import oppoLogo from "../../public/logos/oppo_logo.svg";
+import weltklasseLogo from "../../public/logos/weltklasse_zh_logo.svg";
 import Parallax from "../Common/parallax";
 import { Router, useRouter } from "next/router";
 
